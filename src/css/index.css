@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.focus\:shadow-outline:focus {
+  box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.5);
+}
+
+.green-link:hover {
+  color: #00754a;
+}

@@ -1,0 +1,21 @@
+---
+title: "Automate your website's copyright date"
+date: 2020-09-15
+published: true
+topic: "JavaScript"
+tags: ["JavaScript", "web development"]
+---
+
+As a new coder, it took me learning from an experiened professional that my website's copyright could be automatically updated for me--instead of setting a notification every New Years to update it!
+
+The awesome thing is it is incredibly easy to implement and only takes one line of code:
+
+```jsx
+<span>Copyright &copy; Locksley Kolakowski {new Date().getFullYear()}</span>
+```
+
+Here are a few things to keep in mind:
+
+1. Unlike `<div>`, `<span>` is an inline element, making it optimial for styling and adding JavaScript to your website.
+2. Use `&copy` instead of &copy is important as not all editors support Unicode. (However, Unicode is very prevalent making this less necessary!)
+3. `{new Date().getFullYear()}` gets only the year.
