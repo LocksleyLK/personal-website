@@ -24,15 +24,7 @@ module.exports = {
         icon: `${__dirname}/static/favicon.png`, // This path is relative to the root of the site.
       },
     },
-    // 'gatsby-plugin-postcss',
-    {
-      resolve: `gatsby-plugin-postcss`,
-      options: {
-        cssLoaderOptions: {
-          camelCase: false,
-        },
-      },
-    },
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
