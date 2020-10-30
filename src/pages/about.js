@@ -39,7 +39,6 @@ function SidebarContent(props) {
           </a>
         </li>
         <li>Oathbringer</li>
-        <li>To Sleep in a Sea of Stars</li>
       </ul>
       <h2 class="font-bold text-xl mt-2 mb-2">Currently watching</h2>
       <ul>The Mandalorian</ul>
