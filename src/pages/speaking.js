@@ -10,7 +10,8 @@ function SidebarContent(props) {
     <>
       <h2 class="font-bold text-xl mb-2">Upcoming Talks</h2>
       <ul>
-        <li>No upcoming talks. 😢</li>
+        <li>Anyone can AI with Azure Custom Vision</li>
+        <li className="text-xs">Granite State Coding Camp | September 14, 2020</li>
       </ul>
       <h2 class="font-bold text-xl mt-2 mb-2">Past Talks</h2>
       <ul>
