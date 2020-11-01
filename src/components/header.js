@@ -77,7 +77,7 @@ export default function Header() {
             {/* <span className="label">Github</span> */}
           </a>
         </li>
-        <li>
+        <li className="ml-6">
           <a href="https://twitter.com/locksleylk" target="_blank" className="text-black-500 hover:text-green-600">
             <i class="fab fa-twitter" aria-hidden="true"></i>
             {/* <span className="label">Github</span> */}
