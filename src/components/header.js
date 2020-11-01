@@ -111,8 +111,12 @@ export default function Header() {
       <div className="mt-10 mx-auto max-w-3xl">
         <h2 className="text-2xl">Speaking</h2>
         <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-12 mt-4">
-          <p>Anyone can AI with Azure Custom Vision</p>
-          <p> Granite State Code Camp | November 14, 2020</p>
+          <p>
+            Anyone can AI with Azure Custom Vision <br>
+            </br>
+          Granite State Code Camp | November 14, 2020
+          </p>
+
           <p>I'd love to speak at your event! Check out my past talks and availability <Link className="text-black-500 hover:text-green-600" to="../speaking">here</Link>!</p>
         </div>
       </div>
