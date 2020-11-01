@@ -57,10 +57,10 @@ export default function Navigation() {
                 </svg>
               </button>
             </div>
-            <ThemeToggle
+            {/* <ThemeToggle
               scheme={scheme}
             // onChange={() => setScheme(scheme === 'light' ? 'dark' : 'light')}
-            />
+            /> */}
           </div>
         </header>
 
