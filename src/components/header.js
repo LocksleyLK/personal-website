@@ -114,7 +114,7 @@ export default function Header() {
           <p>
             Anyone can AI with Azure Custom Vision <br>
             </br>
-            <span className="test-sm">Granite State Code Camp | November 14, 2020</span>
+            <span className="text-sm">Granite State Code Camp | November 14, 2020</span>
           </p>
 
           <p>I'd love to speak at your event! Check out my past talks and availability <Link className="text-black-500 hover:text-green-600" to="../speaking">here</Link>!</p>
