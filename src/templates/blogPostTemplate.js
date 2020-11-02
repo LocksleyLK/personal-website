@@ -87,6 +87,7 @@ export default function BlogPostTemplate({ data }) {
         crossorigin="anonymous"
       />
       <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+      <link href="/assets/style.css" rel="stylesheet" />
       {/* <link rel="shortcut icon" type="image/png" href="/static/favicon.png" /> */}
     </Helmet>
     <Layout sidebarContent={<SidebarContent />}>
