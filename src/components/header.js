@@ -114,7 +114,7 @@ export default function Header() {
           <ul>
             <li>College 101 for Technologists</li>
             <li className="text-xs">Superposition San Jose | November 7, 2020</li>
-            <li>Anyone can AI with Azure Custom Vision</li>
+            <li className="mt-2">Anyone can AI with Azure Custom Vision</li>
             <li className="text-xs">Granite State Code Camp | November 14, 2020</li>
           </ul>
           <p>I'd love to speak at your event! Check out my past talks and availability <Link className="text-black-500 hover:text-green-600" to="../speaking">here</Link>!</p>
