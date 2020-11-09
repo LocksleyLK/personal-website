@@ -10,12 +10,14 @@ function SidebarContent(props) {
     <>
       <h2 class="font-bold text-xl mb-2">Upcoming Talks</h2>
       <ul>
-        <li>College 101 for Technologists</li>
-        <li className="text-xs">Superposition San Jose | November 7, 2020</li>
         <li>Anyone can AI with Azure Custom Vision</li>
         <li className="text-xs">Granite State Code Camp | November 14, 2020</li>
       </ul>
       <h2 class="font-bold text-xl mt-2 mb-2">Past Talks</h2>
+      <ul>
+        <li>College 101 for Technologists</li>
+        <li className="text-xs">Superposition San Jose | November 7, 2020</li>
+      </ul>
       <ul>
         <li>Introduction to Cloud Computing</li>
         <li className="text-xs">STEM League | July 29, 2020</li>

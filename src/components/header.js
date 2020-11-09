@@ -112,8 +112,6 @@ export default function Header() {
         <h2 className="text-2xl">Speaking</h2>
         <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-12 mt-4">
           <ul>
-            <li>College 101 for Technologists</li>
-            <li className="text-xs">Superposition San Jose | November 7, 2020</li>
             <li className="mt-2">Anyone can AI with Azure Custom Vision</li>
             <li className="text-xs">Granite State Code Camp | November 14, 2020</li>
           </ul>
