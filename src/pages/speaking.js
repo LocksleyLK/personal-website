@@ -18,7 +18,7 @@ function SidebarContent(props) {
         <li>College 101 for Technologists</li>
         <li className="text-xs">Superposition San Jose | November 7, 2020</li>
       </ul>
-      <ul>
+      <ul className="mt-2">
         <li>Introduction to Cloud Computing</li>
         <li className="text-xs">STEM League | July 29, 2020</li>
       </ul>
