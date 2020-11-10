@@ -113,9 +113,9 @@ export default function Header() {
         <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-12 mt-4">
           <ul>
             <li className="mt-2">Anyone can AI with Azure Custom Vision</li>
-            <li className="text-xs">Granite State Code Camp | November 14, 2020</li>
+            <li className="text-xs"><a href="https://www.granitestatecodecamp.org/" target="_blank" className=" hover:text-green-600">Granite State Code Camp</a> | November 14, 2020</li>
             <li className="mt-2">Unlocking the Power of Azure with Quantum Computing</li>
-            <li className="text-xs">Festive Tech Calendar | December 2020</li>
+            <li className="text-xs"><a href="https://festivetechcalendar.com/" target="_blank" className=" hover:text-green-600">Festive Tech Calendar</a> | December 2020</li>
           </ul>
           <p>I'd love to speak at your event! Check out my past talks and availability <Link className="text-black-500 hover:text-green-600" to="../speaking">here</Link>!</p>
         </div>

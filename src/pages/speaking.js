@@ -11,11 +11,11 @@ function SidebarContent(props) {
       <h2 class="font-bold text-xl mb-2">Upcoming Talks</h2>
       <ul>
         <li>Anyone can AI with Azure Custom Vision</li>
-        <li className="text-xs">Granite State Code Camp | November 14, 2020</li>
+        <li className="text-xs"><a href="https://www.granitestatecodecamp.org/" target="_blank" className=" hover:text-green-600">Granite State Code Camp</a> | November 14, 2020</li>
       </ul>
       <ul className="mt-2">
         <li>Unlocking the Power of Azure with Quantum Computing</li>
-        <li className="text-xs">Festive Tech Calendar | December 2020</li>
+        <li className="text-xs"><a href="https://festivetechcalendar.com/" target="_blank" className=" hover:text-green-600">Festive Tech Calendar</a> | December 2020</li>
       </ul>
       <h2 class="font-bold text-xl mt-2 mb-2">Past Talks</h2>
       <ul>
