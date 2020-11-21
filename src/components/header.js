@@ -112,8 +112,6 @@ export default function Header() {
         <h2 className="text-2xl">Speaking</h2>
         <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-12 mt-4">
           <ul>
-            <li className="mt-2">Informatics Degree Panel</li>
-            <li className="text-xs">Society of Women Engineers | November 19 2020</li>
             <li className="mt-2">Unlocking the Power of Azure with Quantum Computing</li>
             <li className="text-xs"><a href="https://festivetechcalendar.com/" target="_blank" className=" hover:text-green-600">Festive Tech Calendar</a> | December 2020</li>
           </ul>
