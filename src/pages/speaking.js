@@ -2,6 +2,8 @@ import React from "react"
 import Layout from "../components/layout"
 import { Link } from "gatsby"
 import { Helmet } from "react-helmet"
+import talks from "../components/talks"
+import moment from "moment"
 
 import Form from '../components/form'
 
@@ -9,39 +11,21 @@ function SidebarContent(props) {
   return (
     <>
       <h2 class="font-bold text-xl mb-2">Upcoming Talks</h2>
-      <ul className="mt-2">
-        <li>Unlocking the Power of Azure with Quantum Computing</li>
-        <li className="text-xs"><a href="https://festivetechcalendar.com/" target="_blank" className=" hover:text-green-600">Festive Tech Calendar</a> | December 2020</li>
+      <ul>
+        {talks.filter(item => moment().isBefore(item.date)).map(item => <li>
+          <div className="mt-2">{item.title}</div>
+          <div className="text-xs"><a href={item.eventLink} target="_blank" className=" hover:text-green-600">{item.event}</a> | {item.date}</div>
+        </li>)}
       </ul>
+
       <h2 class="font-bold text-xl mt-2 mb-2">Past Talks</h2>
       <ul>
-        <li>Informatics Degree Panel</li>
-        <li className="text-xs">Society of Women Engineers | November 19 2020</li>
+        {talks.filter(item => moment().isAfter(item.date)).map(item => <li>
+          <div className="mt-2">{item.title}</div>
+          <div className="text-xs"><a href={item.eventLink} target="_blank" className=" hover:text-green-600">{item.event}</a> | {item.date}</div>
+        </li>)}
       </ul>
-      <ul className="mt-2">
-        <li>Anyone can AI with Azure Custom Vision</li>
-        <li className="text-xs"><a href="https://www.granitestatecodecamp.org/" target="_blank" className=" hover:text-green-600">Granite State Code Camp</a> | November 14, 2020</li>
-      </ul>
-      <ul className="mt-2">
-        <li>College 101 for Technologists</li>
-        <li className="text-xs">Superposition San Jose | November 7, 2020</li>
-      </ul>
-      <ul className="mt-2">
-        <li>Introduction to Cloud Computing</li>
-        <li className="text-xs">STEM League | July 29, 2020</li>
-      </ul>
-      <ul className="mt-2">
-        <li>Ignite Student Panel</li>
-        <li className="text-xs">University of Washington Information School | Febuary 27, 2020</li>
-      </ul>
-      <ul className="mt-2">
-        <li>Girls Who Code Alumni Panel</li>
-        <li className="text-xs">Adobe, Seattle | July 26, 2019</li>
-      </ul>
-      <ul className="mt-2">
-        <li>The Importance of Women in Technology</li>
-        <li className="text-xs">Adobe, Seattle | August 23, 2018</li>
-      </ul>
+
       <h2 class="font-bold text-xl mt-2 mb-2">Topics</h2>
       <ul>
         <li>Coming soon! 😉</li>

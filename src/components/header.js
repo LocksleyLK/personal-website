@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 // import ThemeToggle from './themetoggle'
 import { Link, graphql, useStaticQuery } from "gatsby"
 import moment from "moment"
+import talks from "./talks"
 import Dump from "./Dump";
 
 function Card(props) {
@@ -112,8 +113,10 @@ export default function Header() {
         <h2 className="text-2xl">Speaking</h2>
         <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-12 mt-4">
           <ul>
-            <li className="mt-2">Unlocking the Power of Azure with Quantum Computing</li>
-            <li className="text-xs"><a href="https://festivetechcalendar.com/" target="_blank" className=" hover:text-green-600">Festive Tech Calendar</a> | December 2020</li>
+            {talks.filter(item => moment().isBefore(item.date)).map(item => <li>
+              <div className="mt-2">{item.title}</div>
+              <div className="text-xs"><a href={item.eventLink} target="_blank" className=" hover:text-green-600">{item.event}</a> | {item.date}</div>
+            </li>)}
           </ul>
           <p>I'd love to speak at your event! Check out my past talks and availability <Link className="text-black-500 hover:text-green-600" to="../speaking">here</Link>!</p>
         </div>
