@@ -37,31 +37,29 @@ function SidebarContent(props) {
     <>
       <h2 class="font-bold text-xl mb-2">Categories</h2>
       <ul>
-        <li>CSS</li>
+        <li>Custom Vision</li>
         <li>JavaScript</li>
         <li>Social</li>
       </ul>
       <h2 class="font-bold text-xl mt-2 mb-2">Tags</h2>
       <ul>
-        <li>CSS</li>
         <li>Hackathon</li>
         <li>JavaScript</li>
         <li>Social</li>
-        <li>Virtual</li>
         <li>Web Development</li>
       </ul>
       <h2 class="font-bold text-xl mt-2 mb-2">Recent Posts</h2>
       <ul>
-        <li>Getting the best of both worlds from Tailwind cards</li>
-        <li className="text-xs">Sep 30, 2020</li>
+        <li>Set up your first Custom Vision Project</li>
+        <li className="text-xs">Nov 23, 2020</li>
       </ul>
       <ul className="mt-2">
         <li>I'm going to the Grace Hopper Conference 2020</li>
         <li className="text-xs">Sep 27, 2020</li>
       </ul>
       <ul className="mt-2">
-        <li>Networking: level up your next virtual meetup</li>
-        <li className="text-xs">Sep 26, 2020</li>
+        <li>Automate your website's copyright date</li>
+        <li className="text-xs">Sep 15, 2020</li>
       </ul>
     </>
   )
