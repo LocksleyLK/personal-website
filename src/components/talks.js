@@ -1,9 +1,9 @@
 export default [
   {
-    title: "Anyone can AI with Azure Custom Vision",
-    event: "Global AI Student Conference",
-    date: "December 12, 2020",
-    eventLink: "https://globalai.live/global-ai-student-conference/"
+    title: "A Primer on Quantum Computing in Azure",
+    event: "Festive Tech Calendar",
+    date: "December 2020",
+    eventLink: "https://festivetechcalendar.com/"
   },
   {
     title: "Unlocking the Power of Azure with Quantum Computing",
@@ -12,10 +12,10 @@ export default [
     eventLink: "https://azureday.community/"
   },
   {
-    title: "A Primer on Quantum Computing in Azure",
-    event: "Festive Tech Calendar",
-    date: "December 2020",
-    eventLink: "https://festivetechcalendar.com/"
+    title: "Anyone can AI with Azure Custom Vision",
+    event: "Global AI Student Conference",
+    date: "December 12, 2020",
+    eventLink: "https://globalai.live/global-ai-student-conference/"
   },
   {
     title: "Informatics Degree Panel",

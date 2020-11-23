@@ -46,6 +46,7 @@ export const query = graphql`query SITE_INDEX_QUERY {
         title 
         date 
         topic
+        featuredImage
       } 
       fields {
         slug
@@ -90,11 +91,12 @@ export default function Header() {
         <h2 className="text-2xl">Recent Posts</h2>
         <div className="grid grid-cols-1  sm:grid-cols-2 gap-4 md:gap-8 lg:gap-12 max-w-3xl mx-auto mt-4">
           {data.allMdx.nodes.map(({ excerpt, frontmatter, fields }) => {
+            console.log(frontmatter);
             return (
               <Card
                 title={frontmatter.title}
                 link={fields.slug}
-                image="https://tailwindcss.com/img/card-top.jpg"
+                image={frontmatter.featuredImage || "https://tailwindcss.com/img/card-top.jpg"}
                 alt="Mountain at sunset"
                 summary={excerpt}
                 date={moment(frontmatter.date, "YYYY-MM-DD").format("LL")}

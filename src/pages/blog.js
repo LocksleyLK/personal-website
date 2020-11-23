@@ -77,6 +77,7 @@ export const query = graphql`query SITE_BLOG_QUERY {
         title 
         date 
         topic
+        featuredImage
       } 
       fields {
         slug
@@ -113,7 +114,7 @@ export default function Blog() {
         <BlogCard
           title={frontmatter.title}
           link={fields.slug}
-          image="https://tailwindcss.com/img/card-top.jpg"
+          image={frontmatter.featuredImage || "https://tailwindcss.com/img/card-top.jpg"}
           alt="Mountain at sunset"
           summary={excerpt}
           date={moment(frontmatter.date, "YYYY-MM-DD").format("LL")}
