@@ -1,7 +1,7 @@
 ---
 title: "Set up your first Custom Vision Project"
 date: 2020-11-14
-published: true
+published: false
 topic: "Custom Vision"
 tags: ["Azure", "Custom Vision", "Artificial Intellifence"]
 ---
@@ -16,34 +16,38 @@ Custom Vision is an awesome tool from Azure. In this article, we're going to cov
 
 Go to customvision.ai and sign in. This will take you to Custom Vision's landing page. Select new project.
 
-<img src="newproject.png"
-     alt="New Project Icon"
-     (style="float: left; margin-right: 10px;")
+<img
+  src="/assets/customvisionintro/newproject.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 10px;"
 />
 
 To create a new project, we will enter a name and project description. My project is going to be a model that can detect different Washington State hummingbird species. You can use this idea or something else you find interesting. The name I have chosen is **hummingbird-vision** and the description will be **Detect different hummingbird species**.
 
-<img src="name.png"
-     alt="New Project Icon"
-     (style="float: left; margin-right: 10px;")
+<img
+  src="/assets/customvisionintro/name.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 10px;"
 />
 
 If you already have a resource created, select that. If you don't, click the **create new** button. Give your resource a name and select an Azure Subscription.
 
 To select a Resource Group, select **create new** again. Give your resource a name and choose a Server location. I live in the Seattle area so I chose the location closest to me: West US 2.
 
-<img src="createNewResource.png"
-     alt="New Project Icon"
-     (style="float: left; margin-right: 10px;")
+<img
+  src="/assets/customvisionintro/createNewResource.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 10px;"
 />
 
 Click **Create resource group.** Now, we need to choose a Kind, Location, and Pricing Tier. I chose **Cognitive Services**, the **West US 2** location, and the **S0** which is the automatic version you can select with an Azure for Students Subscription.
 
 Once your Create New Resource pop-up looks similar to this, click the **Create Resource** button.
 
-<img src="createResource.png"
-     alt="New Project Icon"
-     (style="float: left; margin-right: 10px;")
+<img
+  src="/assets/customvisionintro/createResource.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 10px;"
 />
 
 Now, we're back to the first pop up. Custom Vision allows you to create two different types of projects. Either classification or object detection.
@@ -54,9 +58,10 @@ Now, we're back to the first pop up. Custom Vision allows you to create two diff
 
 For my project, I need to be detecting whole images so I will be using the Classification Project Type.
 
-<img src="projectType.png"
-     alt="New Project Icon"
-     (style="float: left; margin-right: 10px;")
+<img
+  src="/assets/customvisionintro/projectType.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 10px;"
 />
 
 In addition to selecting different Project Types, you can also choose a uniqie Classification Type. Either Multilabel of Multiclass.
@@ -67,23 +72,26 @@ In addition to selecting different Project Types, you can also choose a uniqie C
 
 For my project, I need to be detecting one bird per image so I will be using the Multiclass Classification Type.
 
-<img src="classificationType.png"
-     alt="New Project Icon"
-     (style="float: left; margin-right: 10px;")
+<img
+  src="/assets/customvisionintro/classificationType.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 10px;"
 />
 
 Next up is selecting different domains. There are some common domains that you can specifically train for. Washington State hummingbirds does not fall into any of the provided categories so I'll be using the **General** domain.
 
-<img src="domain.png"
-     alt="New Project Icon"
-     (style="float: left; margin-right: 10px;")
+<img
+  src="/assets/customvisionintro/domain.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 10px;"
 />
 
 Once your Create new project page looks like this, click **create project**.
 
-<img src="createNewProject.png"
-     alt="New Project Icon"
-     (style="float: left; margin-right: 10px;")
+<img
+  src="/assets/customvisionintro/createNewProject.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 10px;"
 />
 
 ## 2. Collect and label data

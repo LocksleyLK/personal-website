@@ -91,10 +91,12 @@ export default function BlogPostTemplate({ data }) {
       {/* <link rel="shortcut icon" type="image/png" href="/static/favicon.png" /> */}
     </Helmet>
     <Layout sidebarContent={<SidebarContent />}>
-      <p class="text-sm text-green-600 flex items-center font-bold">CSS</p>
-      <h1 className="font-bold text-3xl dark:text-gray-100">{frontmatter.title}</h1>
-      <p class="text-sm text-gray-600 flex items-center font-bold">{frontmatter.date}</p>
-      <MDXRenderer>{body}</MDXRenderer>
+      <article class="prose">
+        <p class="text-sm text-green-600 flex items-center font-bold">CSS</p>
+        <h1 className="font-bold text-3xl dark:text-gray-100">{frontmatter.title}</h1>
+        <p class="text-sm text-gray-600 flex items-center font-bold">{frontmatter.date}</p>
+        <MDXRenderer>{body}</MDXRenderer>
+      </article>
       {/* <BlogCard title="Getting the best of both worlds from Tailwind cards" image="https://tailwindcss.com/img/card-top.jpg" alt="Mountain at sunset" summary="I combined them to make a design that works best for me" date="Sep 28, 2020" topic="CSS" />
       <BlogCard title="I'm going to the Grace Hopper conference 2020!" image="https://tailwindcss.com/img/card-top.jpg" alt="Mountain at sunset" summary="I can't wait to network and connect with women in technology 👩‍💻" date="Sep 27, 2020" topic="Social" />
       <BlogCard title="Networking: level up your next virtual meetup" image="https://tailwindcss.com/img/card-top.jpg" alt="Mountain at sunset" summary="Have you heard of Remo? Hint: it is really cool!" date="Sep 26, 2020" topic="Social" />
