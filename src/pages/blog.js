@@ -50,16 +50,16 @@ function SidebarContent(props) {
       </ul>
       <h2 class="font-bold text-xl mt-2 mb-2">Recent Posts</h2>
       <ul>
+        <li>How to create web anchors in Markdown</li>
+        <li className="text-xs">Nov 24, 2020</li>
+      </ul>
+      <ul className="mt-2">
         <li>Set up your first Custom Vision Project</li>
         <li className="text-xs">Nov 23, 2020</li>
       </ul>
       <ul className="mt-2">
         <li>I'm going to the Grace Hopper Conference 2020</li>
         <li className="text-xs">Sep 27, 2020</li>
-      </ul>
-      <ul className="mt-2">
-        <li>Automate your website's copyright date</li>
-        <li className="text-xs">Sep 15, 2020</li>
       </ul>
     </>
   )

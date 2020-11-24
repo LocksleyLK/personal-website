@@ -1,0 +1,30 @@
+---
+title: "How to create web anchors in Markdown"
+date: 2020-11-24
+published: true
+topic: "Web Development"
+tags: ["web development"]
+featuredImage: "/assets/anchor.JPG"
+---
+
+After writing my very first long technical blog, I showed it to my twin sister who advised that it would be easier to navigate if I added web anchors.
+
+It was at this point that I realize I had never implemented web anchors before--not in HTML let alone in Markdown.
+
+This is how you do it. In your table of contents, use the following code:
+
+```jsx
+## [First Section](#firstAnchor)
+```
+
+Use this code for where you want your table of contents to link to:
+
+```jsx
+## <a name='firstAnchor'>First Section</a>
+```
+
+Here are a few things to keep in mind:
+
+1. My table of contents and section titles use the `H2` header. You may have different formatting on your blog.
+2. The class name can be anything you want it to be. Just make sure that they match up.
+3. I use HTML for my second code block. Markdown supports HTML so this formatting will work for you!
