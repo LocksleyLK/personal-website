@@ -7,24 +7,24 @@ import Dump from "./Dump";
 
 function Card(props) {
   return (
-    <div class="rounded overflow-hidden shadow-lg dark:bg-gray-800 dark:text-gray-100">
+    <div className="rounded overflow-hidden shadow-lg dark:bg-gray-800 dark:text-gray-100">
       <Link to={props.link}>
-        <img class="w-full" src={props.image} alt={props.alt} />
-        <div class="px-6 py-4">
-          <p class="text-sm text-green-600 flex items-center font-bold">
+        <img className="w-full" src={props.image} alt={props.alt} />
+        <div className="px-6 py-4">
+          <p className="text-sm text-green-600 flex items-center font-bold">
             {props.topic}
           </p>
-          <div class="font-bold text-xl mb-2">{props.title}</div>
-          <p class="text-gray-700 dark:text-gray-100 text-base">
+          <div className="font-bold text-xl mb-2">{props.title}</div>
+          <p className="text-gray-700 dark:text-gray-100 text-base">
             {props.summary}
           </p>
         </div>
-        <div class="px-6 pb-4">
-          <div class="flex items-center">
-            <img class="w-10 h-10 rounded-full mr-4" src="/assets/avatar.jpg" alt="Avatar of Locksley Kolakowski" />
-            <div class="text-sm">
-              <p class="text-gray-900 dark:text-gray-100 leading-none">Locksley Kolakowski</p>
-              <p class="text-gray-600 dark:text-gray-400">{props.date}</p>
+        <div className="px-6 pb-4">
+          <div className="flex items-center">
+            <img className="w-10 h-10 rounded-full mr-4" src="/assets/avatar.jpg" alt="Avatar of Locksley Kolakowski" />
+            <div className="text-sm">
+              <p className="text-gray-900 dark:text-gray-100 leading-none">Locksley Kolakowski</p>
+              <p className="text-gray-600 dark:text-gray-400">{props.date}</p>
             </div>
           </div>
         </div>
@@ -69,19 +69,19 @@ export default function Header() {
       <ul className="flex justify-center text-2xl mt-2">
         <li className="mr-6">
           <a href="https://www.linkedin.com/in/locksley-kolakowski" target="_blank" className="text-black-500 hover:text-green-600">
-            <i class="fab fa-linkedin" aria-hidden="true"></i>
+            <i className="fab fa-linkedin" aria-hidden="true"></i>
             {/* <span className="label">LinkedIn</span> */}
           </a>
         </li>
         <li>
           <a href="https://github.com/LocksleyLK" target="_blank" className="text-black-500 hover:text-green-600">
-            <i class="fab fa-github" aria-hidden="true"></i>
+            <i className="fab fa-github" aria-hidden="true"></i>
             {/* <span className="label">Github</span> */}
           </a>
         </li>
         <li className="ml-6">
           <a href="https://twitter.com/locksleylk" target="_blank" className="text-black-500 hover:text-green-600">
-            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <i className="fab fa-twitter" aria-hidden="true"></i>
             {/* <span className="label">Github</span> */}
           </a>
         </li>

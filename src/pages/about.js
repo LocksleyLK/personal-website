@@ -27,7 +27,7 @@ function SidebarContent(props) {
           </a>
         </li>
       </ul>
-      <h2 class="font-bold text-xl mt-2 mb-2">Currently reading</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Currently reading</h2>
       <ul>
         <li>
           <a
@@ -40,14 +40,14 @@ function SidebarContent(props) {
         </li>
         <li>Oathbringer</li>
       </ul>
-      <h2 class="font-bold text-xl mt-2 mb-2">Currently watching</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Currently watching</h2>
       <ul>The Mandalorian</ul>
-      <h2 class="font-bold text-xl mt-2 mb-2">Teaching</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Teaching</h2>
       <ul>
         <li>STEM League Mentor</li>
         <li>High school math tutor</li>
       </ul>
-      <h2 class="font-bold text-xl mt-2 mb-2">Other things</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Other things</h2>
       <ul>
         <li>I have a twin sister!</li>
         <li>I really like raccoons. And foxes!</li>

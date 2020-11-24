@@ -9,21 +9,21 @@ function BlogCard(props) {
     <Link to={props.link}>
       <div class="rounded  w-full lg:flex dark:bg-gray-800 dark:text-gray-100 mt-8 shadow-lg">
 
-        <img class="w-full h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={props.image} alt={props.alt} />
-        <div class="overflow-hidden lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-          <div class="mb-4">
-            <p class="text-sm text-green-600 flex items-center font-bold">
+        <img className="w-full h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={props.image} alt={props.alt} />
+        <div className="overflow-hidden lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div className="mb-4">
+            <p className="text-sm text-green-600 flex items-center font-bold">
               {props.topic}
             </p>
-            <div class="text-gray-900 dark:text-gray-100 font-bold text-xl mb-2">{props.title}</div>
-            <p class="text-gray-700 dark:text-gray-100 text-base">{props.summary}</p>
+            <div className="text-gray-900 dark:text-gray-100 font-bold text-xl mb-2">{props.title}</div>
+            <p className="text-gray-700 dark:text-gray-100 text-base">{props.summary}</p>
           </div>
 
-          <div class="flex items-center">
-            <img class="w-10 h-10 rounded-full mr-4" src="/assets/avatar.jpg" alt="Avatar of Locksley Kolakowski" />
-            <div class="text-sm">
-              <p class="text-gray-900 dark:text-gray-100 leading-none">Locksley Kolakowski</p>
-              <p class="text-gray-600 dark:text-gray-400">{props.date}</p>
+          <div className="flex items-center">
+            <img className="w-10 h-10 rounded-full mr-4" src="/assets/avatar.jpg" alt="Avatar of Locksley Kolakowski" />
+            <div className="text-sm">
+              <p className="text-gray-900 dark:text-gray-100 leading-none">Locksley Kolakowski</p>
+              <p className="text-gray-600 dark:text-gray-400">{props.date}</p>
             </div>
           </div>
         </div>
@@ -35,20 +35,20 @@ function BlogCard(props) {
 function SidebarContent(props) {
   return (
     <>
-      <h2 class="font-bold text-xl mb-2">Categories</h2>
+      <h2 className="font-bold text-xl mb-2">Categories</h2>
       <ul>
         <li>Custom Vision</li>
         <li>JavaScript</li>
         <li>Social</li>
       </ul>
-      <h2 class="font-bold text-xl mt-2 mb-2">Tags</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Tags</h2>
       <ul>
         <li>Hackathon</li>
         <li>JavaScript</li>
         <li>Social</li>
         <li>Web Development</li>
       </ul>
-      <h2 class="font-bold text-xl mt-2 mb-2">Recent Posts</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Recent Posts</h2>
       <ul>
         <li>How to create web anchors in Markdown</li>
         <li className="text-xs">Nov 24, 2020</li>

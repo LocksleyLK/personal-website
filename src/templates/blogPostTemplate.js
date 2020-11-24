@@ -6,22 +6,22 @@ import { Helmet } from "react-helmet"
 
 function BlogCard(props) {
   return (
-    <div class="rounded  w-full lg:flex dark:bg-gray-800 dark:text-gray-100 mt-8 shadow-lg">
-      <img class="w-full h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={props.image} alt={props.alt} />
-      <div class="overflow-hidden lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-        <div class="mb-4">
-          <p class="text-sm text-green-600 flex items-center font-bold">
+    <div className="rounded  w-full lg:flex dark:bg-gray-800 dark:text-gray-100 mt-8 shadow-lg">
+      <img className="w-full h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={props.image} alt={props.alt} />
+      <div className="overflow-hidden lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div className="mb-4">
+          <p className="text-sm text-green-600 flex items-center font-bold">
             {props.topic}
           </p>
-          <div class="text-gray-900 dark:text-gray-100 font-bold text-xl mb-2">{props.title}</div>
-          <p class="text-gray-700 dark:text-gray-100 text-base">{props.summary}</p>
+          <div className="text-gray-900 dark:text-gray-100 font-bold text-xl mb-2">{props.title}</div>
+          <p className="text-gray-700 dark:text-gray-100 text-base">{props.summary}</p>
         </div>
 
-        <div class="flex items-center">
-          <img class="w-10 h-10 rounded-full mr-4" src="/assets/avatar.jpg" alt="Avatar of Locksley Kolakowski" />
-          <div class="text-sm">
-            <p class="text-gray-900 dark:text-gray-100 leading-none">Locksley Kolakowski</p>
-            <p class="text-gray-600 dark:text-gray-400">{props.date}</p>
+        <div className="flex items-center">
+          <img className="w-10 h-10 rounded-full mr-4" src="/assets/avatar.jpg" alt="Avatar of Locksley Kolakowski" />
+          <div className="text-sm">
+            <p className="text-gray-900 dark:text-gray-100 leading-none">Locksley Kolakowski</p>
+            <p className="text-gray-600 dark:text-gray-400">{props.date}</p>
           </div>
         </div>
 
@@ -33,12 +33,12 @@ function BlogCard(props) {
 function SidebarContent(props) {
   return (
     <>
-      <h2 class="font-bold text-xl mb-2">Categories</h2>
+      <h2 className="font-bold text-xl mb-2">Categories</h2>
       <ul>
         <li className="hover:text-green-600 hover:font-semibold">JavaScript</li>
       </ul>
-      <h2 class="font-bold text-xl mt-2 mb-2">Tags</h2>
-      <h2 class="font-bold text-xl mt-2 mb-2">Recent Posts</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Tags</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Recent Posts</h2>
       <ul>
         <li>Create email input forms for your website</li>
         <li className="text-xs">Sep 17, 2020</li>
@@ -91,10 +91,10 @@ export default function BlogPostTemplate({ data }) {
       {/* <link rel="shortcut icon" type="image/png" href="/static/favicon.png" /> */}
     </Helmet>
     <Layout sidebarContent={<SidebarContent />}>
-      <article class="prose">
-        <p class="text-sm text-green-600 flex items-center font-bold">{frontmatter.topic}</p>
+      <article className="prose">
+        <p className="text-sm text-green-600 flex items-center font-bold">{frontmatter.topic}</p>
         <h1 className="font-bold text-3xl dark:text-gray-100">{frontmatter.title}</h1>
-        <p class="text-sm text-gray-600 flex items-center font-bold">{frontmatter.date}</p>
+        <p className="text-sm text-gray-600 flex items-center font-bold">{frontmatter.date}</p>
         <MDXRenderer>{body}</MDXRenderer>
       </article>
       {/* <BlogCard title="Getting the best of both worlds from Tailwind cards" image="https://tailwindcss.com/img/card-top.jpg" alt="Mountain at sunset" summary="I combined them to make a design that works best for me" date="Sep 28, 2020" topic="CSS" />

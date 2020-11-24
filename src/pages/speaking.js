@@ -10,7 +10,7 @@ import Form from '../components/form'
 function SidebarContent(props) {
   return (
     <>
-      <h2 class="font-bold text-xl mb-2">Upcoming Talks</h2>
+      <h2 className="font-bold text-xl mb-2">Upcoming Talks</h2>
       <ul>
         {talks.filter(item => moment().isBefore(item.date)).map(item => <li>
           <div className="mt-2">{item.title}</div>
@@ -18,7 +18,7 @@ function SidebarContent(props) {
         </li>)}
       </ul>
 
-      <h2 class="font-bold text-xl mt-2 mb-2">Past Talks</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Past Talks</h2>
       <ul>
         {talks.filter(item => moment().isAfter(item.date)).map(item => <li>
           <div className="mt-2">{item.title}</div>
@@ -26,7 +26,7 @@ function SidebarContent(props) {
         </li>)}
       </ul>
 
-      <h2 class="font-bold text-xl mt-2 mb-2">Topics</h2>
+      <h2 className="font-bold text-xl mt-2 mb-2">Topics</h2>
       <ul>
         <li>Coming soon! 😉</li>
       </ul>

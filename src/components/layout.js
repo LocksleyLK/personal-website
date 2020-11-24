@@ -16,7 +16,7 @@ export default function Layout(props) {
         <div class="w-2/3 px-4 text-lg">
           {props.children}
         </div>
-        <div class='w-1/3 px-4'>
+        <div className='w-1/3 px-4'>
           <Card>{props.sidebarContent}</Card>
         </div>
       </div>
