@@ -92,7 +92,7 @@ export default function BlogPostTemplate({ data }) {
     </Helmet>
     <Layout sidebarContent={<SidebarContent />}>
       <article class="prose">
-        <p class="text-sm text-green-600 flex items-center font-bold">CSS</p>
+        <p class="text-sm text-green-600 flex items-center font-bold">{frontmatter.topic}</p>
         <h1 className="font-bold text-3xl dark:text-gray-100">{frontmatter.title}</h1>
         <p class="text-sm text-gray-600 flex items-center font-bold">{frontmatter.date}</p>
         <MDXRenderer>{body}</MDXRenderer>
