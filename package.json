@@ -16,8 +16,9 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.14",
     "@mdx-js/react": "^1.6.14",
-    "@tailwindcss/typography": "^0.2.0",
+    "@tailwindcss/typography": "^0.3.1",
     "@tailwindcss/ui": "^0.4.0",
+    "autoprefixer": "^10.0.2",
     "gatsby": "^2.23.12",
     "gatsby-plugin-manifest": "^2.4.33",
     "gatsby-plugin-mdx": "^1.2.29",
@@ -25,13 +26,14 @@
     "gatsby-plugin-react-helmet": "^3.3.11",
     "gatsby-source-filesystem": "^2.3.30",
     "moment": "^2.29.0",
+    "postcss": "^8.1.10",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "prettier": "2.0.5",
-    "tailwindcss": "^1.5.2"
+    "tailwindcss": "^2.0.1"
   },
   "repository": {
     "type": "git",

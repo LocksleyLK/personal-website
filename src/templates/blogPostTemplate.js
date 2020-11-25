@@ -91,7 +91,7 @@ export default function BlogPostTemplate({ data }) {
       {/* <link rel="shortcut icon" type="image/png" href="/static/favicon.png" /> */}
     </Helmet>
     <Layout sidebarContent={<SidebarContent />}>
-      <article class="prose">
+      <article class="prose dark:prose-dark">
         <p class="text-sm text-green-600 flex items-center font-bold">{frontmatter.topic}</p>
         <h1 className="font-bold text-3xl dark:text-gray-100">{frontmatter.title}</h1>
         <p class="text-sm text-gray-600 flex items-center font-bold">{frontmatter.date}</p>
