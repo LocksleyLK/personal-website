@@ -4,12 +4,17 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import moment from "moment"
 import { Helmet } from "react-helmet"
 
-function BlogCard(props) {
+let BlogCard = (props) => {
   return (
     <Link to={props.link}>
-      <div class="rounded  w-full lg:flex dark:bg-gray-800 dark:text-gray-100 mt-8 shadow-lg">
+      <div class="rounded w-full lg:flex dark:bg-gray-800 dark:text-gray-100 mt-8 shadow-lg">
 
-        <img class="w-full h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={props.image} alt={props.alt} />
+        {/* <img
+          class="w-full h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          src={props.image}
+          alt={props.alt}
+        /> */}
+        <img class="h-48 w-full object-cover lg:w-48 rounded-t lg:rounded-t-none lg:rounded-l" src={props.image} alt={props.alt} />
         <div class="overflow-hidden lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
           <div class="mb-4">
             <p class="text-sm text-green-600 flex items-center font-bold">
@@ -31,6 +36,23 @@ function BlogCard(props) {
     </Link>
   )
 }
+
+// BlogCard = (props) => {
+//   return (
+//     <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+//       <div class="md:flex">
+//         <div class="md:flex-shrink-0">
+//           <img class="h-48 w-full object-cover md:w-48" src={props.image} alt={props.alt} />
+//         </div>
+//         <div class="p-8">
+//           <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{props.topic}</div>
+//           <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{props.title}</a>
+//           <p class="mt-2 text-gray-500">{props.summary}</p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 function SidebarContent(props) {
   return (

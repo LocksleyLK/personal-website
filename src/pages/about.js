@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet"
 
 function SidebarContent(props) {
   return (
-    <>
+    <div>
       <h2 class="font-bold text-xl mb-2">Books I recommend</h2>
       <ul>
         <li>
@@ -54,7 +54,7 @@ function SidebarContent(props) {
         <li>I'm training to climb Mt. St. Helens.</li>
         {/* <li>My favorite Starbucks drink is a chai latte.</li> */}
       </ul>
-    </>
+    </div>
   )
 }
 
