@@ -29,7 +29,7 @@ export default function ThemeToggle({ scheme, onChange }) {
       }}
       onKeyDown={(e) => handleKeyDown(e)}
       className={`${scheme === 'dark' ? 'bg-green-600' : 'bg-gray-200'
-        } select-none relative inline-flex flex-shrink-0 mt-1 h-6 w-6 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline`}
+        } select-none relative inline-flex flex-shrink-0 mt-1 h-6 w-6 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring`}
     >
       <span
         aria-hidden="true"
