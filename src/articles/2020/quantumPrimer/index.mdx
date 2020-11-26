@@ -1,0 +1,162 @@
+---
+title: "Unlocking the power of Azure with quantum computing"
+date: 2020-11-26
+published: true
+topic: "quantum"
+tags: ["quantum", "Azure"]
+featuredImage: "/assets/quantumPrimer/catsSnow.gif"
+---
+
+Happy holidays! Today, I'll be writing an introductory primer on a subject that first sparked my interest two years ago. Let's begin with a question:
+
+What do Azure, Einstein, and cats have in common?
+
+They will help us understand the past and present of quantum computing and what we can expect from the not so distant future.
+
+## Table of contents
+
+### [1. What is quantum computing?](#what)
+
+### [2. How does quantum computing work?](#work)
+
+### [3. Why does quantum computing matter?](#matter)
+
+### [4. How does quantum computing relate to Azure?](#Azure)
+
+### [5. Where can you learn more?](#learn)
+
+### [6. Sources](#source)
+
+<br />
+
+## <a name='what'>What is quantum computing?</a>
+
+To understand the fundamentals of quantum computing, we have to go back to 1935 when Erwin Schrödinger first shared his thought experiment with Albert Einstein.
+
+Schrödinger asked: what if we placed a cat in a box? Specifically a box with a poisonous substance inside that had an equal chance of being released or staying contained.
+
+Before we opened the box, we would have no idea whether the cat was alive or dead. It could be alive _and_ dead.
+
+<img
+  src="/assets/quantumPrimer/catsSnow.gif"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+The concept of existing in two different states at the same time is at the core of understanding quantum computing.
+
+Quantum computing is a new computational paradigm. This means that it runs differently than your phone, laptop, server, or any other piece of technology you own.
+
+What sets quantum computing apart from a classical computer is speed; it has the potential to solve specific problems exponentially faster.
+
+## <a name='work'>How does quantum computing work?</a>
+
+Let's go back to Schrodinger's Cat. When we think about a cat being alive _and_ dead, that is fundamentally different from how classical computers work.
+
+### Comparing quantum and classical computers
+
+Right now, our computers run on **bits**: either 1s or 0s that are strung together and processed by the computer. This is known as **binary** code. Just like how a cat can't really be alive and dead at the same time, a bit can never be a 1 or 0 at the same time.
+
+<img
+  src="/assets/quantumPrimer/laptop.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+Quantum computing, in comparison, has quantum bits (known as **qubits**). Qubits have two superpowers that bits do not have.
+
+Let's say you have a single qubit. This qubit can be a 1, a 0, or _both_ at the same time. When a qubit is both a 1 and 0, this is known as **superposition**.
+
+<img
+  src="/assets/quantumPrimer/superposition.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+Now, let's say you have two qubits. When combined, they can simultaneously be a 00,
+10, 01, and 11. Those 2 qubits yeild 4 results compared to a bit yielding only 1.
+This grows exponentially; for every qubit you add, the number of combinations double.
+For example, if you added a third qubit, you would have eight combinations. This
+is known as **entanglement**.
+
+### The benefit of superposition and entanglement
+
+An exponential number of potential outputs decreases the time it takes for a program to run compared to a classical computer that has to run linearly.
+
+The following is a really good representation of how a classical computer would solve a maze compared to a quantum computer.
+
+### Classical computer
+
+<img
+  src="/assets/quantumPrimer/binaryMaze.gif"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Quantum computer
+
+<img
+  src="/assets/quantumPrimer/quantumMaze.gif"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+The linear method of a classical computer takes longer than the exponential method of a quantum computer.
+
+With such a speedier runtime, why haven't we started learning and implementing it more? There are three main reasons for this we are going to cover in more detail.
+
+### 1. It is debatable on whether we have achieved quantum supremacy
+
+**Quantum supremamcy** can be defined as when a quantum computer can perform a task faster than a classical computer. Currently, a classical computer can simulate a quantum computer up to a certain number of qubits. A quantum computer would need to surpass a classical computer in ability.
+
+As investment in quantum technology and research improves, this will soon be achieved. Some sources think quantum computers can become mainstream in the next 2 to 5 years.
+
+### 2. Running a quantum computer is expensive
+
+More specifically, running a quantum computer can cost over 1,000 times what the same query would cost to run in a classical computer.
+
+### 3. Quantum computers are only more effective than a classical computer in specific use cases
+
+Quantum computers are only more effective than a classical computer to solve highly specialized problems. This means that we won't be carrying around quantum smartphones in the future.
+
+## <a name='matter'>Why does quantum computing matter?</a>
+
+With the current limitations of quantum computers, it is important to understand why they're relevant. I'll cover two use cases where quantum computing has the potential to change the world.
+
+### Healthcare
+
+- Healthcare
+
+Classical computers can take years to process the complexity and accuracy needed to develop medical treatments. A breakthrough in quantum computing would mean treatments could be developed exponentially faster.
+
+### Climate change
+
+Quantum computing can discover solutions that would efficiently combat climate change. This includes creating synthetic fertilizers that reduce consumption of natural gas as well as make our energy sources--such as disposable batterys-more efficient.
+
+## <a name='Azure'>How does quantum computing relate to Azure?</a>
+
+Microsoft is one of the leading companies investing and developing quantum technology. They are building quantum computing into Azure where you can develop and scale soltuions right now.
+
+<img
+  src="/assets/quantumPrimer/qdk.webp"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+Additionally, Microsoft has created the Quantum Development Kit (QDK) witch includes Microsoft's open source language, Q#.
+
+## <a name='learn'>Where can you learn more?</a>
+
+- Complete the Microsoft Learn quantum computing foundations [learning path](https://docs.microsoft.com/en-us/learn/paths/quantum-computing-fundamentals/)
+- Learn more about [Azure Quantum](https://azure.microsoft.com/en-us/services/quantum/)
+- Check out Microsoft's [Quantum Development Kit](https://www.microsoft.com/en-us/quantum/development-kit)
+
+## <a name='source'>Sources</a>
+
+I used a range of materials to create this post. In addition to the sources I listed above, I used the following:
+
+- [Think beyond ones and zeros](https://www.accenture.com/_acnmedia/PDF-54/Accenture-807510-Quantum-Computing-RGB-V02.pdf)
+- [Schrödinger's cat: a thought experiment in quantum mechanics - Chad Orzel](https://www.youtube.com/watch?v=UjaAxUO6-Uw&ab_channel=TED-Ed)
+- Quantum superposition and what that means to quantum computation for their fantastic [maze animations](https://becominghuman.ai/quantum-superposition-and-what-that-means-to-quantum-computation-3fbb5a711b9a)
+- [Quantum supremacy explained](https://www.youtube.com/watch?v=90U_SmKyfGI&ab_channel=DoS-DomainofScience)
+- Animation and art credit: Lynzley Kolakowski
