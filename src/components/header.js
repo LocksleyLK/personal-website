@@ -9,7 +9,9 @@ function Card(props) {
   return (
     <div class="rounded overflow-hidden shadow-lg dark:bg-gray-800 dark:text-gray-100">
       <Link to={props.link}>
-        <img class="w-full" src={props.image} alt={props.alt} />
+        <div className="aspect-w-3 aspect-h-2">
+          <img class="w-full" src={props.image} alt={props.alt} />
+        </div>
         <div class="px-6 py-4">
           <p class="text-sm text-green-600 flex items-center font-bold">
             {props.topic}
