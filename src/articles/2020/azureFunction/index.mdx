@@ -1,10 +1,10 @@
 ---
 title: "Learn Azure Functions with Seasons of Serverless"
-date: 2020-09-27
-published: false
+date: 2020-11-30
+published: true
 topic: "Serverless"
-tags: ["serverless", "Azure"]
-featuredImage: "/assets/tetons.jpg"
+tags: ["serverless", "Azure", "JavaScript"]
+featuredImage: "/assets/azureFunction/pumpkin.jpg"
 ---
 
 Hello and happy December! This month, I am learning more about Serverless with the [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless/blob/main/Nov-23-2020.md) challenge.
@@ -13,25 +13,120 @@ In this article, I'll cover my solution to Challenge 1.
 
 ## Table of Contents
 
-## Prerequisites
+### [Prerequisites](#prerequisites)
 
-- Visual Studio Code downloaded
+### [1. Challenge outline](#outline)
+
+### [2. My solution](#solution)
+
+### [3. Check the results](#results)
+
+### [4. More resources](#resources)
+
+<br />
+
+## <a name='prerequisites'>Prerequisites</a>
+
+- Visual Studio Code
+- Azure Functions Extension Installed
 - An Azure account
 
-## Step 1: Install Azure Functions to Visual Studio Code
+## <a name='outline'>1. Challenge outline</a>
 
-To create serverless apps in Visual Studio, we'll need to download Azure Functions.
+In this challenge, we will be entering a turkey's weight to determine it's brine recipe, brine time, and roast time.
 
-Go to this [link](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&WT.mc_id=academic-10922-cxa), and click install.
+### Input
 
-If you already have Visual Studio Code installed, this will make it open. From here, click install within Visual Studio. You can check if it works by seeing if the Azure icon has been added to your Visual Studio sidebar.
+For this challenge, our input will be a turkey's weight.
 
-This is a good time to pause and create some empty folders to hold your Serverless Function. I created a folder in Documents called seasons-of-severless, and inside of this folder, I created a second empty folder called challenge-1.
+### Output
 
-Now, let's hop back to our Azure Functions page in Visual Studio. It already has some instructions for you to follow but I'm going to cover what I did.
+There are three distinct parts to our output:
 
-After selecting the create a new project button, I selected to put my project into my challege-1 folder.
+#### 1. The brine recipe
 
-I chose JavaScript as my desired programming language and named my function turkeyTime before pressing enter.
+- Salt (in cups) = 0.05 \* lbs of turkey
+- Water (gallons) = 0.66 \* lbs of turkey
+- Brown sugar (cups) = 0.13 \* lbs of turkey
+- Shallots = 0.2 \* lbs of turkey
+- Cloves of garlic = 0.4 \* lbs of turkey
+- Whole peppercorns (tablespoons) = 0.13 \* lbs of turkey
+- Dried juniper berries (tablespoons) = 0.13 \* lbs of turkey
+- Fresh rosemary (tablespoons) = 0.13 \* lbs of turkey
+- Thyme (tablespoons) = 0.06 \* lbs of turkey
 
-I selected Anonymous as my authorization level so that anyone could call my function.
+#### 2. The brine time (in hours)
+
+- Brine time (in hours) = 2.4 \* lbs of turkey
+
+#### 3. The rost time (in minutes)
+
+- Roast time (in minutes) = 15 \* lbs of turkey
+
+Using the following information, we'll create an Azure Function to develop a solution.
+
+## <a name='solution'>2. My solution</a>
+
+When creating my Azure Function, I selected the **HTTP trigger**, named the function **turkeyTime**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited one file to include the following code: **index.js**.
+
+```jsx
+// turkeyTime/index.js
+
+module.exports = async function (context, req) {
+  context.log("JavaScript HTTP trigger function processed a request.")
+
+  const weight = req.query.weight || (req.body && req.body.weight)
+  const responseMessage = weight
+    ? `Your turkey weighs ${weight} lbs. 
+
+Brine Instructions:
+Salt: ${(0.05 * weight).toFixed(2)} cups
+Water: ${(0.66 * weight).toFixed(2)} gallons
+Brown Sugar: ${(0.13 * weight).toFixed(2)} cups
+Shallots: ${(0.2 * weight).toFixed(2)} 
+Cloves of garlic: ${(0.4 * weight).toFixed(2)}
+Whole peppercorns: ${(0.13 * weight).toFixed(2)} tablespoons
+Dried juniper berries: ${(0.13 * weight).toFixed(2)} tablespoons
+Fresh rosemary: ${(0.13 * weight).toFixed(2)} tablespoons
+Thyme: ${(0.06 * weight).toFixed(2)} tablespoons
+
+Brine Time: ${(2.4 * weight).toFixed(2)} hours
+
+Roast Time: ${(15 * weight).toFixed(2)} minutes`
+    : "Please provide a weight for your turkey!"
+
+  context.res = {
+    // status: 200, /* Defaults to 200 */
+    body: responseMessage,
+  }
+}
+```
+
+### A note on my solution
+
+- I used `.toFixed(2)` to ensure solutions did not have infinite decimal points. That would have not been the best user experience!
+
+## <a name='results'>3. Check the results</a>
+
+After deploying my code to Azure's Function App, this is what I got:
+
+### Input
+
+<img
+  src="/assets/azureFunction/input.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Output
+
+<img
+  src="/assets/azureFunction/output.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+## <a name='resources'>4. More resources</a>
+
+1. Join this week's [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless/blob/main/Nov-23-2020.md) challenge
+2. Learn more about Azure Functions on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/create-serverless-applications/)
