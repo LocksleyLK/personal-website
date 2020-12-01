@@ -11,10 +11,11 @@ function Card(props) {
       <Link to={props.link}>
         <div
           className="aspect-w-3 aspect-h-2"
-          style={{
-            position: "relative",
-            paddingBottom: "calc(2 / 3 * 100%)",
-          }}>
+        // style={{
+        //   position: "relative",
+        //   paddingBottom: "calc(2 / 3 * 100%)",
+        // }}
+        >
           <img class="w-full" src={props.image} alt={props.alt} />
         </div>
         <div class="px-6 py-4">
