@@ -55,6 +55,10 @@ export default function Speaking() {
       <p>Thank you so much for thinking about me for your next event! Public speaking is my passion, and I love sharing it with others.</p>
       <p className="mt-4">I have spoken at events as intimate as 20 and as large as 1,000. My current experience makes me a good speaker for students, and I can give a technical or non-technical talk for any occasion.</p>
       <p className="mt-4">If you think I would be a good fit for your event or would like to learn more, you can email me personally at locksleylk@gmail.com.</p>
+
+      <h2 className="font-bold text-2xl mt-8">Check out some of my past recordings!</h2>
+      <iframe className="mt-4 w-full h-3/6" src="https://www.youtube.com/embed/5prq8r5qD9s?start=40062" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
     </Layout>
   </div>
 }
