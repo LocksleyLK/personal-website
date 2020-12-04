@@ -1,11 +1,5 @@
 export default [
   {
-    title: "A Primer on Quantum Computing in Azure",
-    event: "Festive Tech Calendar",
-    date: "December 2020",
-    eventLink: "https://festivetechcalendar.com/"
-  },
-  {
     title: "Unlocking the Power of Azure with Quantum Computing",
     event: "Virtual Azure Community Day",
     date: "December 3, 2020",
