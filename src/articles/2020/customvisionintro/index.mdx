@@ -81,7 +81,7 @@ For my project, I need to be detecting whole images so I will be using the Class
   style="float: left; margin-right: 200px;"
 />
 
-In addition to selecting different Project Types, you can also choose a uniqie Classification Type. Either Multilabel of Multiclass.
+In addition to selecting different Project Types, you can also choose a unique Classification Type. Either Multilabel of Multiclass.
 
 **Multilabel** allows you to have multiple tags per image.
 
@@ -95,7 +95,7 @@ For my project, I need to be detecting one bird per image so I will be using the
   style="float: left; margin-right: 200px;"
 />
 
-Next up is selecting different domains. There are some common domains that you can specifically train for. Washington State hummingbirds does not fall into any of the provided categories so I'll be using the **General** domain.
+Next up is selecting different domains. There are some common domains that you can specifically train for. Washington State hummingbirds do not fall into any of the provided categories so I'll be using the **General** domain.
 
 <img
   src="/assets/customvisionintro/domain.png"
@@ -113,11 +113,11 @@ Once your Create new project page looks like this, click **create project**.
 
 ## <a name='label'>2. Collect and label data</a>
 
-This is the most time-consuming part of Custom Vision. You need to find 20 or more images of each label. For my model, I'll have four different tags for the Anna's, Black-chinned, Calliope, and Rufous Hummingbirds. If you are following along with my demo, check out my <a href="https://github.com/LocksleyLK/set-up-your-first-Custom-Vision-project" target="_blank">GitHub</a> where I have already saved at least 20 versions of each photo.
+This is the most time-consuming part of Custom Vision. You need to find 20 or more images of each label. For my model, I'll have four different tags for Anna's, Black-chinned, Calliope, and Rufous Hummingbirds. If you are following along with my demo, check out my <a href="https://github.com/LocksleyLK/set-up-your-first-Custom-Vision-project" target="_blank">GitHub</a> where I have already saved at least 20 versions of each photo.
 
 We need to transfer these photos into Custom Vision. Normally, I download all of the photos to my local drive.
 
-After that, you can select the photos and input them into Custom Vision. First, selelct **add images**, navigate to the folder where your images are stored, and import them into Custom Vision. I recommend importing all of your images with the same tag at once.
+After that, you can select the photos and input them into Custom Vision. First, select **add images**, navigate to the folder where your images are stored, and import them into Custom Vision. I recommend importing all of your images with the same tag at once.
 
 After you import your images, there will be a pop-up in Custom Vision for you to tag the batch of images. In my image, you can see that I tagged all of my Anna's Hummingbird images with the tag **anna**. Repeat this step for all your images and tags.
 
@@ -149,7 +149,7 @@ Training my hummingbird dataset took approximately 5 minutes. A cool feature abo
 
 ## <a name='test'>4. Test model</a>
 
-After Custom Vision is completeted training, this chart will appear displaying the **Precision**, **Recall**, and **AP** of your model.
+After Custom Vision is completed training, this chart will appear displaying the **Precision**, **Recall**, and **AP** of your model.
 
 <img
   src="/assets/customvisionintro/data.png"
@@ -163,11 +163,11 @@ The **Recall** graph represents the percentage of correct tags your model predic
 
 Finally, the **AP** graph represents your model's combined precision and recall at different probability thresholds.
 
-I always aim to be above a 90% in all three categories. If I am not, I will add more images to further train within Custom Vision.
+I always aim to be above 90% in all three categories. If I am not, I will add more images to further train within Custom Vision.
 
 If you have hit the 90% threshold (and even if you haven't), we can try a **Quick Test**. At the top right corner of the screen, right next to the **Train** button, you will see a **Quick Test** button.
 
-When you click **Quick Test**, it will open into a pop up. Here, you can test your model for accuracy. You can either input an image URL or browse your local files.
+When you click **Quick Test**, it will open into a popup. Here, you can test your model for accuracy. You can either input an image URL or browse your local files.
 
 I uploaded a leftover photo from my Anna's Hummingbird collection which had a 99.9% certainty that it was an Anna's Hummingbird.
 
