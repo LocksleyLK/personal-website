@@ -18,7 +18,7 @@ export default [
     eventLink: "https://globalai.live/global-ai-student-conference/"
   },
   {
-    title: "How to Build Successful Career in AI/ML",
+    title: "How to Build a Successful Career in AI/ML",
     event: "Global AI Student Conference",
     date: "December 12, 2020",
     eventLink: "https://globalai.live/global-ai-student-conference/"
