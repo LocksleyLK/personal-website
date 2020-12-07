@@ -1,0 +1,172 @@
+---
+title: "Seasons of Serverless, Custom Vision, and Lovely Ladoos"
+date: 2020-12-07
+published: true
+topic: "Serverless"
+tags: ["Azure", "Custom Vision", "Artificial Intelligence"]
+featuredImage: "/assets/ladoo/sparkler.jpg"
+---
+
+Today, I am continuing my [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless) series.
+
+In this article, I'll cover my solution to Challenge 2: Lovely Ladoos.
+
+## Table of Contents
+
+### [Prerequisites](#prerequisites)
+
+### [1. Challenge outline](#outline)
+
+### [2. My solution](#solution)
+
+### [3. Check the results](#results)
+
+### [4. More resources](#resources)
+
+<br />
+
+## <a name='prerequisites'>Prerequisites</a>
+
+- Visual Studio Code
+- Azure Functions Extension Installed
+- Custom Vision
+
+## <a name='outline'>1. Challenge outline</a>
+
+In this challenge, we will enter URLs of ladoo images. The serverless function will return whether the image is a ladoo or not.
+
+### Input
+
+For this challenge, our input will be an image URL.
+
+### Output
+
+If our image is a ladoo, our output will be:
+
+`This is a ladoo :).`
+
+If our image is not a ladoo, our output will be:
+
+`This is not a ladoo :(.`
+
+## <a name='solution'>2. My solution</a>
+
+### Step 1. Create your Custom Vision app.
+
+For my project, I created two different tags. The first tag I used was **ladoo**.
+
+<img
+  src="/assets/ladoo/ladoo-label.PNG"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+The second tag I used was **other** which included images of glazed donut holes, cinnamon donut holes, cream puffs, and mandarin oranges.
+
+<img
+  src="/assets/ladoo/other-label.PNG"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+I then selected the **Quick Training** option. After it completed training, I felt confident enough in my model to begin writing my Azure Function.
+
+<img
+  src="/assets/ladoo/data.PNG"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Step 2. Create your Azure Function.
+
+When creating my Azure Function, I selected the **HTTP trigger**, named the function **ladooVision**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited one file to include the following code: **index.js**.
+
+```jsx
+// ladooVision/index.js
+
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    const imageUrl = (req.query.url || (req.body && req.body.url));
+
+    if (!imageUrl) {
+        context.res = {
+            status: 400,
+            body: 'Image url is required'
+        };
+        return;
+    }
+
+    const projectId = [Your project ID here];
+    const customVisionPredictionKey = [Your prediction key here];
+    const customVisionPredictionEndPoint = [Your prediction endpoint here];
+    if (!customVisionPredictionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+
+    const credentials = new ApiKeyCredentials({ inHeader: {"Prediction-key": customVisionPredictionKey } });
+    const client = new PredictionAPIClient(credentials, customVisionPredictionEndPoint);
+
+    await client
+        .classifyImageUrl(projectId, "Iteration1", { url: imageUrl })
+        .then(result => {
+            let message = "This is not a ladoo :(.";
+            if (result.predictions[0].tagName === "ladoo") {
+                message = "This is a ladoo :).";
+            }
+            context.res = {
+                body: message
+            };
+        })
+        .catch(err => {
+            console.log("An error occurred:");
+            console.error(err);
+
+            context.res = {
+                status: 502,
+                body: err
+            };
+        });
+}
+```
+
+## <a name='results'>3. Check the results</a>
+
+After deploying my code to Azure's Function App, this is what I got:
+
+### Ladoo Input
+
+<img
+  src="/assets/ladoo/ladoo1.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Ladoo Output
+
+<img
+  src="/assets/ladoo/output4.png"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Other input
+
+<img
+  src="/assets/ladoo/donut2.PNG"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Other output
+
+<img
+  src="/assets/ladoo/output6.PNG"
+  alt="New Project Icon"
+  style="float: left; margin-right: 90px;"
+/>
+
+## <a name='resources'>4. More resources</a>
+
+1. Join this week's [Seasons of Serverless](<(https://github.com/microsoft/Seasons-of-Serverless)>) challenge
+2. Learn more about Azure Functions on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/create-serverless-applications/)
+3. Check out my solution to [Challenge 1](https://www.locksleylk.com/2020/azureFunction/)
+4. Check out my article to learn how to set up your first [Custom Vision](https://www.locksleylk.com/2020/customvisionintro/) project
