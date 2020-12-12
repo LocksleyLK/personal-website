@@ -1,6 +1,6 @@
 export default [
   {
-    title: "Introduction to Python Workshop",
+    title: "Intro to Python Workshop",
     event: "TechTogether Seattle",
     date: "January 23, 2021",
     eventLink: "https://seattle.techtogether.io/"
