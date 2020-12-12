@@ -1,5 +1,11 @@
 export default [
   {
+    title: "Introduction to Python Workshop",
+    event: "TechTogether Seattle",
+    date: "January 23, 2021",
+    eventLink: "https://seattle.techtogether.io/"
+  },
+  {
     title: "Unlocking the Power of Azure with Quantum Computing",
     event: "Virtual Azure Community Day",
     date: "December 3, 2020",

@@ -1,0 +1,148 @@
+---
+title: "Seasons of Serverless, Longest Kebabs"
+date: 2020-12-14
+published: false
+topic: "Serverless"
+tags: ["Azure", "JavaScript", "serverless"]
+featuredImage: "/assets/longestKebab/kebab.jpg"
+---
+
+We're almost halfway through December which means we're almost halfway through the [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless) series.
+
+In this article, I'll cover my solution to Challenge 3: The Longest Kebab.
+
+## Table of Contents
+
+### [Prerequisites](#prerequisites)
+
+### [1. Challenge outline](#outline)
+
+### [2. My solution](#solution)
+
+### [3. Check the results](#results)
+
+### [4. More resources](#resources)
+
+<br />
+
+## <a name='prerequisites'>Prerequisites</a>
+
+- Visual Studio Code
+- Azure Functions Extension Installed
+- An Azure account
+
+## <a name='outline'>1. Challenge outline</a>
+
+In this challenge, our goal is to make the longest kebab to feed the most people. We are going to get the weight of our ground pork in kilos to determine our recipe, kebab length, and number of servings.
+
+### Input
+
+For this challenge, our input will be the weight of ground pork, in kilograms.
+
+### Output
+
+There are three distinct parts to our output:
+
+#### 1. The kebab recipe
+
+- Ground lamb (in kilos)
+- Small onions = (kilos of ground lamb / 2)
+- Garlic cloves = (kilos of ground lamb \* 4)
+- Ground cumin (teaspoons) = (kilos of ground lamb \* 1.5) / 2
+- Ground sumac (teaspoons) = (kilos of ground lamb \* 1.5) / 2
+- Salt (teaspoons) = (kilos of ground lamb \* .5) / 2
+- Ground black pepper (teaspoons) = (kilos of ground lamb \* .25) / 2
+- Red pepper flakes (teaspoons) = (kilos of ground lamb \* .25) / 2
+
+#### 2. The kebab length
+
+- In inches = (kilos of ground lamb \* 105) / 2
+- In feet = ((kilos of ground lamb \* 105) / 2) / 12
+
+#### 3. The total number of servings
+
+- kilos of ground lamb \* 8.8
+
+### How did I get these numbers?
+
+I used this [recipe](https://www.thespruceeats.com/adana-kebab-4164647) for my solution.
+
+My solution assumes 1 pound of ground lamb can create 4 kebabs each with a length of 6 inches. Two kilograms of lamb equates to 4.4 pounds which could create a 105.6 inch kebab.
+
+My solution also assumes 1 6-inch kebab is equal to serving 1 person. So a pound of ground lamb could serve four people. (And two kilograms of lamb would make 17.6 servings).
+
+## <a name='solution'>2. My solution</a>
+
+When creating my Azure Function, I selected the **HTTP trigger**, named the function **longestKebab**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited one file to include the following code: **index.js**.
+
+```
+// longestKebab/index.js
+
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    const kilos = (req.query.kilos || (req.body && req.body.kilos));
+    const responseMessage = kilos
+        ? `You have ${kilos} kilos of ground lamb.
+
+Kebab Recipe:
+Ground lamb: ${(kilos)} kilos
+Small onions: ${(kilos / 2).toFixed(2)}
+Cloves of garlic: ${((kilos * 4) / 2).toFixed(2)}
+Ground cumin (divided): ${((kilos * 1.5) / 2).toFixed(2)} teaspoons
+Ground sumac: ${((kilos * 1.5) / 2).toFixed(2)} teaspoons
+Salt: ${((kilos * .5) / 2).toFixed(2)} teaspoons
+Ground black pepper: ${((kilos * .25) / 2).toFixed(2)} teaspoons
+Red pepper flakes: ${((kilos * .25) / 2).toFixed(2)} teaspoons
+
+With this recipe, you could create a kebab that is:
+${((kilos * 105) / 2).toFixed(2)} inches
+or
+${(((kilos * 105) / 2) / 12 ).toFixed(2)} feet
+
+You could serve:
+${(kilos * 8.8).toFixed()} people
+`
+        :
+        "Please input your amount of ground lamb in kilograms!";
+
+    context.res = {
+        // status: 200, /* Defaults to 200 */
+        body: responseMessage
+    };
+}
+```
+
+### A note on my solution
+
+- I used `.toFixed(2)` to ensure solutions did not have infinite decimal points. However, when I calculated the number of people I can serve, I used `.toFixed()` because I could not serve a fraction of a person!
+
+## <a name='results'>3. Check the results</a>
+
+After deploying my code to Azure's Function App, this is what I got:
+
+## <a name='results'>3. Check the results</a>
+
+After deploying my code to Azure's Function App, this is what I got:
+
+### Input
+
+<img
+  src="/assets/longestKebab/input.png"
+  alt="Azure Functions Input"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Output
+
+<img
+  src="/assets/longestKebab/output.png"
+  alt="Azure Functions Output"
+  style="float: left; margin-right: 90px;"
+/>
+
+## <a name='resources'>4. More resources</a>
+
+1. Join this week's [Seasons of Serverless](<(https://github.com/microsoft/Seasons-of-Serverless)>) challenge
+2. Learn more about Azure Functions on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/create-serverless-applications/)
+3. Check out my solution to [Challenge 2](https://www.locksleylk.com/2020/ladoos/)
