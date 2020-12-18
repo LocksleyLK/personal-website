@@ -128,6 +128,7 @@ export default function Header() {
               <div className="text-xs"><a href={item.eventLink} target="_blank" className=" hover:text-green-600">{item.event}</a> | {item.date}</div>
             </li>)}
           </ul>
+          {/* availibility */}
           <p>I'd love to speak at your event! Check out my past talks and availability <Link className="text-black-500 hover:text-green-600" to="../speaking">here</Link>!</p>
         </div>
       </div>
