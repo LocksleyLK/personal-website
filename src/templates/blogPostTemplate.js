@@ -59,6 +59,7 @@ export const query = graphql`
   query PostsBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       body
+      excerpt(pruneLength: 110) 
       frontmatter {
         title
         date(formatString: "LL")
@@ -74,7 +75,7 @@ export default function BlogPostTemplate({ data }) {
     return null;
   }
 
-  const { frontmatter, body } = data.mdx;
+  const { excerpt, frontmatter, body } = data.mdx;
   console.log(data.mdx);
 
   return <div className="dark:bg-gray-900 dark:text-gray-100">
@@ -89,8 +90,9 @@ export default function BlogPostTemplate({ data }) {
       />
       <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
       <link href="/assets/style.css" rel="stylesheet" />
+      {excerpt && <meta property="og:description" content={excerpt} />}
       {frontmatter.featuredImage &&
-        <meta property="og:image" content={frontmatter.featuredImage} />
+        <meta property="og:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
       }
       {/* <link rel="shortcut icon" type="image/png" href="/static/favicon.png" /> */}
     </Helmet>

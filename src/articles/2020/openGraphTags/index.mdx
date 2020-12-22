@@ -1,0 +1,30 @@
+---
+title: "How to make your blog post look good on social media"
+date: 2020-12-22
+published: false
+topic: "Web Development"
+tags: ["Web Development"]
+featuredImage: "/assets/anchor.JPG"
+---
+
+I just shared a link to my personal webstie on Twitter for the first time, and I quickly noticed a problem. The metadata of my articles (title, description, and image) were not automatically appearing in my post.
+
+What I had observed is established websites and blogging platofrms already had this feature built in, but as my website was built from the ground up, I missed adding it. Furthermore, I had no idea what I needed to be looking for to add this feature.
+
+After some searching, I found the solution: [**Open Graphic Tags**](https://ogp.me/). Open Graphic Tags are lines of code that control how your article is displayed on social media. One really cool feature is they are compatible with Facebook, Twitter, and LinkedIn which means you can post your articles to a lot of different social media platforms.
+
+THe second cool piece is they're very easy to implement. Use this code in the **head** section of HTML:
+
+```jsx
+<meta property="og:title" content="Article Title" />
+<meta property="og:type" content="article" />
+<meta property=“og:image” content=“http://examplephoto.png” />
+<meta property="og:url" content="https://personalwebiste/blog/articleName." />
+<meta property="og:description" content="Article description" />
+```
+
+Here are a few things to keep in mind:
+
+1. The above solution fills in the title, type, url, image, and description of an article.
+2. The title, type, url, and image are required properties.
+3. You could add even more information! Check out this [resource](https://ogp.me/) to learn more.
