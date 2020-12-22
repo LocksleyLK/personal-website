@@ -81,7 +81,7 @@ export default function BlogPostTemplate({ data }) {
   return <div className="dark:bg-gray-900 dark:text-gray-100">
     <Helmet>
       <meta charSet="utf-8" />
-      <title>{frontmatter.title} - Locksley Kolakowski</title>
+      <title>{frontmatter.title}</title>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -98,6 +98,11 @@ export default function BlogPostTemplate({ data }) {
         <>
           <meta property="og:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
           <meta name="twitter:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
+        </>
+      }
+      {frontmatter.title &&
+        <>
+          <meta name="twitter:title" content={frontmatter.title} />
         </>
       }
       {/* <meta name="twitter:title" content="European Travel Destinations " /> */}
