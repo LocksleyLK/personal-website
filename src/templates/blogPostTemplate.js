@@ -63,6 +63,7 @@ export const query = graphql`
         title
         date(formatString: "LL")
         topic
+        featuredImage
       }
     }
   }
@@ -88,6 +89,9 @@ export default function BlogPostTemplate({ data }) {
       />
       <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
       <link href="/assets/style.css" rel="stylesheet" />
+      {frontmatter.featuredImage &&
+        <meta property="og:image" content={frontmatter.featuredImage} />
+      }
       {/* <link rel="shortcut icon" type="image/png" href="/static/favicon.png" /> */}
     </Helmet>
     <Layout sidebarContent={<SidebarContent />}>
