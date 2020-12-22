@@ -7,7 +7,7 @@ tags: ["Azure", "JavaScript", "serverless"]
 featuredImage: "/assets/bestBBQ/best.jpg"
 ---
 
-This week, we're travelling to Brazil with week four of [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless) series.
+This week, we're traveling to Brazil with week four of [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless) series.
 
 In this article, I'll cover my solution to Challenge 4: A Big Barbecue!
 
@@ -69,7 +69,7 @@ There are two distinct parts to our output:
 
 ### How did I get these numbers?
 
-My solution assumes each guest will eat approximately 1 kilo of beef, fillet, sausages, and chicken and .65 pieces of grilled cheese and garlic bread. For the sake of simplicitly, I added these two numbers together.
+My solution assumes each guest will eat approximately 1 kilo of beef, fillet, sausages, and chicken and .65 pieces of grilled cheese and garlic bread. For the sake of simplicity, I added these two numbers together.
 
 So, the number of people we invite could be found by adding all of the food together and dividing it by 1.65.
 
@@ -109,7 +109,7 @@ module.exports = async function (context, req) {
         return;
     }
 
-    // We are assuming the average guest will consume 1 kilo of meet and 0.65 peices of grilled cheese and garlic bread
+    // We are assuming the average guest will consume 1 kilo of meat and 0.65 pieces of grilled cheese and garlic bread
 
     totalFood = beefKilos + filletKilos + sausagesKilos + grilledCheesePieces + garlicBreadPieces + chickenKilos;
 

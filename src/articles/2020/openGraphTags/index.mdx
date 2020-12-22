@@ -7,11 +7,11 @@ tags: ["Web Development"]
 featuredImage: "/assets/anchor.JPG"
 ---
 
-I just shared a link to my personal webstie on Twitter for the first time, and I quickly noticed a problem. The metadata of my articles (title, description, and image) were not automatically appearing in my post.
+I just shared a link to my website on Twitter for the first time, and I quickly noticed a problem. The metadata of my articles (title, description, and image) were not automatically appearing in my post.
 
-What I had observed is established websites and blogging platofrms already had this feature built in, but as my website was built from the ground up, I missed adding it. Furthermore, I had no idea what I needed to be looking for to add this feature.
+What I had observed is established websites and blogging platforms already had this feature built-in, but as my website was built from the ground up, I missed adding it. Furthermore, I had no idea what I needed to be looking for to add this feature.
 
-After some searching, I found the solution: [**Open Graphic Tags**](https://ogp.me/). Open Graphic Tags are lines of code that control how your article is displayed on social media. One really cool feature is they are compatible with Facebook, Twitter, and LinkedIn which means you can post your articles to a lot of different social media platforms.
+After some searching, I found the solution: [**Open Graph Tags**](https://ogp.me/). Open Graph Tags are lines of code that control how your article is displayed on social media. They provide social media platforms with more rich information about your webpage. One cool feature is they are compatible with Facebook, Twitter, and LinkedIn which means you can post your articles to a lot of different social media platforms.
 
 The second cool piece is they're very easy to implement. Use this code in the **head** section of HTML:
 
@@ -25,6 +25,19 @@ The second cool piece is they're very easy to implement. Use this code in the **
 
 Here are a few things to keep in mind:
 
-1. The above solution fills in the title, type, url, image, and description of an article.
-2. The title, type, url, and image are required properties.
+1. The above solution fills in the title, type, URL, image, and description of an article.
+2. The title, type, URL, and image are required properties.
 3. You could add even more information! Check out this [resource](https://ogp.me/) to learn more.
+
+## But wait, it doesn't work yet!
+
+I check the above code on all the social media platforms above and realized it wasn't working on Twitter. I soon learned that Twitter requires unique metadata:
+
+```jsx
+<meta name="twitter:title" content={frontmatter.title} />
+<meta name="twitter:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
+<meta name="twitter:description" content={excerpt} />
+<meta name="twitter:card" content="summary_large_image" />
+```
+
+Once you incorporate this final piece, it should work!
