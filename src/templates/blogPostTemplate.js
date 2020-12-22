@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Helmet } from "react-helmet"
+import HelmetExport, { Helmet } from "react-helmet"
 
 function BlogCard(props) {
   return (
@@ -90,11 +90,18 @@ export default function BlogPostTemplate({ data }) {
       />
       <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
       <link href="/assets/style.css" rel="stylesheet" />
-      {excerpt && <meta property="og:description" content={excerpt} />}
+      {excerpt && <>
+        <meta property="og:description" content={excerpt} />
+        <meta name="twitter:description" content={excerpt} />
+      </>}
       {frontmatter.featuredImage &&
-        <meta property="og:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
+        <>
+          <meta property="og:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
+          <meta name="twitter:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
+        </>
       }
-      <meta name="twitter:card" content="summary_large_image"></meta>
+      {/* <meta name="twitter:title" content="European Travel Destinations " /> */}
+      <meta name="twitter:card" content="summary_large_image" />
       {/* <link rel="shortcut icon" type="image/png" href="/static/favicon.png" /> */}
     </Helmet>
     <Layout sidebarContent={<SidebarContent />}>
