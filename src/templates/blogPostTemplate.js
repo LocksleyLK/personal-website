@@ -90,21 +90,21 @@ export default function BlogPostTemplate({ data }) {
       />
       <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
       <link href="/assets/style.css" rel="stylesheet" />
-      {excerpt && <>
-        <meta property="og:description" content={excerpt} />
-        <meta name="twitter:description" content={excerpt} />
-      </>}
-      {frontmatter.featuredImage &&
-        <>
-          <meta property="og:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
-          <meta name="twitter:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
-        </>
-      }
-      {frontmatter.title &&
-        <>
-          <meta name="twitter:title" content={frontmatter.title} />
-        </>
-      }
+      {/* {excerpt && <> */}
+      <meta property="og:description" content={excerpt} />
+      <meta name="twitter:description" content={excerpt} />
+      {/* </>} */}
+      {/* {frontmatter.featuredImage &&
+        <> */}
+      <meta property="og:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
+      <meta name="twitter:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
+      {/* </>
+      } */}
+      {/* {frontmatter.title &&
+        <> */}
+      <meta name="twitter:title" content={frontmatter.title} />
+      {/* </>
+      } */}
       {/* <meta name="twitter:title" content="European Travel Destinations " /> */}
       <meta name="twitter:card" content="summary_large_image" />
       {/* <link rel="shortcut icon" type="image/png" href="/static/favicon.png" /> */}
