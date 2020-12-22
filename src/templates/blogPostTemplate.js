@@ -94,6 +94,7 @@ export default function BlogPostTemplate({ data }) {
       {frontmatter.featuredImage &&
         <meta property="og:image" content={"https://www.locksleylk.com" + frontmatter.featuredImage} />
       }
+      <meta name="twitter:card" content="summary_large_image"></meta>
       {/* <link rel="shortcut icon" type="image/png" href="/static/favicon.png" /> */}
     </Helmet>
     <Layout sidebarContent={<SidebarContent />}>
