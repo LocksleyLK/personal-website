@@ -1,0 +1,144 @@
+---
+title: "Seasons of Serverless with Power Automate and Microsoft Flow"
+date: 2020-12-28
+published: true
+topic: "Serverless"
+tags: ["Power Automate", "Microsoft Flow", "serverless"]
+featuredImage: "/assets/bestSoup/korea.jpg"
+---
+
+Happy week 5 of [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless)! This time, we're journeyingto Korea and learning how to make Tteok-guk for The New Year.
+
+In this article, I'll cover my solution to Challenge 5: The Best Soup!
+
+## Table of Contents
+
+### [Prerequisites](#prerequisites)
+
+### [1. Challenge outline](#outline)
+
+### [2. My solution](#solution)
+
+### [3. Check the results](#results)
+
+### [4. More resources](#resources)
+
+<br />
+
+## <a name='prerequisites'>Prerequisites</a>
+
+- Power Automate Account
+- Microsoft Flow Mobile Abb download (for testing)
+
+## <a name='outline'>1. Challenge outline</a>
+
+In this challenge, our goal is to create an automated process to set reminders for each step it takes to make Tteok-guk.
+
+Here are the incredients (for 4 people):
+
+- Garae-tteok: 400g
+- Diced beef: 100g
+- Water: 10 cups
+- Eggs: 2
+- Spring onion: 1
+- Minced garlic: 1 tablespoon
+- Soy sauce: 2 tablespoon
+- Sesame oil: 1 tablespoon
+- Olive oil: 1 tablespoon
+- Salt and pepper
+
+Here are the instructions:
+
+1. Slice garae-ttok into small pieces – no thicker than 5 mm.
+   - You can buy sliced garae-tteok.
+   - But in this case, put the sliced garae-tteok into a bowl of water for about 30 mins.
+2. Slice spring onion.
+3. At high heat, stir-fry the diced beef with sesame oil and olive oil until the beef surface goes brown.
+4. Put the water into the wok and boil for about 30 mins with medium heat.
+5. While boiling, remove bubbles from the water from time to time.
+6. Get the eggs beaten.
+7. After the 30 mins, put the minced garlic and soy sauce into the boiled soup. Add some salt, if necessary.
+8. Add the beaten egg and sliced spring onion.
+9. Serve the soup with pepper drizzled on top.
+
+## <a name='solution'>2. My solution</a>
+
+I used Power Automate for my solution. Power Automate is a service that helps you create automated workflows. Power Automate is a part of Microsoft's Power Platform suite.
+
+A cool thing about Power Automate is it includes a tool called Microsoft Flow. Microsoft Flow [runs on top of Azure Logic Apps](https://www.serverless360.com/blog/azure-logic-apps-vs-microsoft-flow#:~:text=While%20Microsoft%20Flow%2C%20runs%20on,are%20some%20differences%20that%20exist.&text=The%20Microsoft%20Flow%20product%20group,PowerApps%2C%20PowerBI%2C%20and%20Dynamics365.) making it serverless! It is also no-code.
+
+### Input
+
+To begin, I created the following Flow in Power Automate. I'll walk through the solution step by step:
+
+#### Step 1: Manually trigger flow by typing "Begin soup"
+
+<img
+  src="/assets/bestSoup/trigger.png"
+  alt="Microsoft Flow Trigger"
+  style="float: left; margin-right: 90px; width: 50%; height: 50%"
+/>
+
+#### Step 2: First notificiation is sent
+
+<img
+  src="/assets/bestSoup/notification1.png"
+  alt="Microsoft Flow first notification"
+  style="float: left; margin-right: 90px;"
+/>
+
+#### Step 3: First 30 minute delay
+
+<img
+  src="/assets/bestSoup/delay1.png"
+  alt="Microsoft Flow first delay"
+  style="float: left; margin-right: 90px;"
+/>
+
+#### Step 4: After 30 minutes, four more notifications are sent
+
+<img
+  src="/assets/bestSoup/notification2.png"
+  alt="Microsoft Flow second notifications"
+  style="float: left; margin-right: 90px;"
+/>
+
+#### Step 5: Second 30 minute delay
+
+<img
+  src="/assets/bestSoup/delay2.png"
+  alt="Microsoft Flow second delay"
+  style="float: left; margin-right: 90px;"
+/>
+
+#### Step 6: After 30 minutes, the final three notifications are sent
+
+<img
+  src="/assets/bestSoup/notification3.png"
+  alt="Microsoft Flow third notifications"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Output
+
+After clicking **Run** in Power Automate and inputting our trigger, there are two distinct outputs. The first output is in Power Automate's web interface and notifies us whether our flow ran successfully. I can tell from my interface that all of my instances have run successfully.
+
+<img
+  src="/assets/bestSoup/runs.png"
+  alt="Microsoft Flow Runs Dashboard"
+  style="float: left; margin-right: 90px;"
+/>
+
+The second, and perhaps more important, output can be seen after downloading the Microsoft Flow app. After running the solution in Power Automate, I would recieve Push Notifications of my phone for when to complete certain tasks. I can tell by the timestamps that the push notifications are running correctly.
+
+<img
+  src="/assets/bestSoup/output.gif"
+  alt="Push notifications on mobile phone"
+  style="float: left; margin-right: 90px;"
+/>
+
+## <a name='resources'>4. More resources</a>
+
+1. Join this week's [Seasons of Serverless](<(https://github.com/microsoft/Seasons-of-Serverless)>) challenge
+2. Learn more about Azure Functions on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/create-serverless-applications/)
+3. Check out my solution to [Challenge 4](https://www.locksleylk.com/2020/bbq//)
