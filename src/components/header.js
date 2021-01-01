@@ -98,7 +98,7 @@ export default function Header() {
       <div className="mt-10 mx-auto max-w-3xl">
         <h2 className="text-2xl">Recent Posts</h2>
         <div className="grid grid-cols-1  sm:grid-cols-2 gap-4 md:gap-8 lg:gap-12 max-w-3xl mx-auto mt-4">
-          {data.allMdx.nodes.map(({ excerpt, frontmatter, fields }) => {
+          {data.allMdx.nodes.filter((node, i) => i < 4).map(({ excerpt, frontmatter, fields }) => {
             console.log(frontmatter);
             return (
               <Card
