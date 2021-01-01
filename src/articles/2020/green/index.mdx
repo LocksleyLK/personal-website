@@ -1,10 +1,10 @@
 ---
 title: "Sustainable software engineering: what is the carbon footprint of your computer?"
 date: 2020-12-31
-published: false
-topic: "Serverless"
+published: true
+topic: "Sustainable Software"
 tags: ["Serverless", "Azure Functions"]
-featuredImage: "/assets/tetons.jpg"
+featuredImage: "/assets/green.jpg"
 ---
 
 As technologists, we spend a lot of time behind desktop computers, laptops, and our mobile phones. Although it isn't obvious, these actions do have a negative imapct on the environment. In this article, we'll talk about sustainable software engineering, and the steps you can take to become more eco-friendly.
@@ -45,12 +45,26 @@ In comparison, Serverless resources are event-driven. This means that they are o
 
 ## <a name='challenge'>3. The sustainable serverless challenge</a>
 
-To learn more about sustainable software engineering and serverless, I created a to help you learn more about serverless and analyze your device's current energy consumption.
+To learn more about sustainable software engineering and serverless, I created a challenge to help you learn more about serverless and analyze your device's current energy consumption.
 
 ### Challenge prompt
 
-Given your current computer setup, how much carbon is emitted every
+Create a serverless solution to find out how much carbon your computer omits year.
+
+#### Some metrics to help you out
+
+- When you are actively using your computer, it emits approximately 0.06 kg of carbon dioxide an hour
+- When your computer is idle, it emnits approximately 0.02 kg of carbon dioxide and hour
+- When your computer is off, it emits 0 kg of carbon dioxide an hour
+
+With these numbers, determine how many hours your computer spends in each of these stages every day. You can use an Azure Function to then find out your annual carbon dioxide emissions.
+
+**Note: These numbers may vary based on your computer, region, and more!**
 
 ## <a name='reflection'>4. Reflection</a>
 
 ## <a name='resources'>5. More resources</a>
+
+1. This article was inspired by the [Seasons of Serverless](<(https://github.com/microsoft/Seasons-of-Serverless)>) challenge
+2. Learn more about Azure Functions on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/create-serverless-applications/)
+3. Learn more about sustainable software development: https://principles.green/!
