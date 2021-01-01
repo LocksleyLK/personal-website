@@ -112,10 +112,11 @@ export default function Header() {
               />
             )
           })}
-          {/* <Card title="Getting the best of both worlds from Tailwind cards" image="https://tailwindcss.com/img/card-top.jpg" alt="Mountain at sunset" summary="Combine the templates to make a design that works for you" date="Sep 28, 2020" topic="CSS" />
-          <Card title="I'm going to the Grace Hopper conference 2020!" image="https://tailwindcss.com/img/card-top.jpg" alt="Mountain at sunset" summary="I can't wait to network and connect with women in technology 👩‍💻" date="Sep 27, 2020" topic="Social" />
-          <Card title="Networking: level up your next virtual meetup" image="https://tailwindcss.com/img/card-top.jpg" alt="Mountain at sunset" summary="Have you heard of Remo? Hint: it is really cool!" date="Sep 26, 2020" topic="Social" />
-          <Card title="Automate your website's copyright date" image="https://tailwindcss.com/img/card-top.jpg" alt="Mountain at sunset" summary="JavaScript makes it easy to keep your copyright year current" date="Sep 15, 2020" topic="JavaScript" /> */}
+        </div>
+        <div className="mt-6 text-right">
+          <a href="/blog" className="text-base font-semibold text-green-600 hover:text-green-500">
+            Read more articles
+          </a>
         </div>
       </div>
 
