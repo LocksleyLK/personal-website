@@ -1,0 +1,339 @@
+---
+title: "Magic chocolate, durable entities, and seasons of serverless"
+date: 2021-01-04
+published: true
+topic: "Serverless"
+tags: ["Azure", "JavaScript", "serverless", "Durable Entities"]
+featuredImage: "/assets/chocolate/paris.jpg"
+---
+
+_Bienvenue en France_ for this week's [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless) challenge.
+
+In this article, I'll cover my solution to Challenge 6: The Magic Chocolate Box!
+
+## Table of Contents
+
+### [Prerequisites](#prerequisites)
+
+### [1. Challenge outline](#outline)
+
+### [2. My solution](#solution)
+
+### [3. Check the results](#results)
+
+### [4. Test it yourself!](#test)
+
+### [5. More resources](#resources)
+
+<br />
+
+## <a name='prerequisites'>Prerequisites</a>
+
+- Visual Studio Code
+- Azure Functions Extension Installed
+- An Azure account
+
+## <a name='outline'>1. Challenge outline</a>
+
+In this challenge, our goal is to develop a solution that would allow family members to reserve their favorite chocolates from a chocolate box. We need to be able to see a list for available chocolates and update the list when reservations are made.
+
+We will use [Durable Entities](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-entities?tabs=csharp) for our solution.
+
+## <a name='solution'>2. My solution</a>
+
+My solutiuon calls for three parts: one Durable Entity and two Azure Functions. I'll break them down each part:
+
+### The Durable Entity: Chocolate
+
+When creating my Durable Entity in Visual Studio, I selected the **Durable Functions activity**, and named the function **Chocolate**.
+
+This will create two files: **function.json** and **index.js**.
+
+In the **function.json** file, I adjusted the **type** from _activityTrigger_ to _entityTrigger_:
+
+```
+// Chocolate/function.json
+
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+In the **index.js** file, I added the following code:
+
+```
+// Chocolate/index.js
+
+const df = require("durable-functions");
+
+const ChocolateBox = [
+    "Dark Sea Salt Caramel",
+    "Milk Sea Salt Caramel",
+    "Apple Cider Caramel",
+    "Almond Butter Crunch",
+    "Cherry Codial",
+    "Coconut Delight",
+    "Dipped Pineapple",
+    "Dipped Apricot",
+    "Dipped Orange Peel",
+    "Espresso Shot",
+    "Peanut Butter Chocolate",
+    "Raspberry Vienna",
+    "Almond Caramel Cluster",
+    "Macadamia Caramel Cluster",
+    "Pecan Caramel Cluster",
+    "Pretzel Caramel Cluster"
+];
+
+let Chocolates = {
+    available: ChocolateBox,
+    reserved: {}
+};
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const {name, item} = context.df.getInput();
+            if(currentValue.available.includes(item)) {
+                currentValue.available.splice(currentValue.available.indexOf(item), 1);
+                if (currentValue.reserved[name]) {
+                    currentValue.reserved[name].push(item);
+                } else {
+                    currentValue.reserved[name] = [ item ];
+                }
+            }
+            context.df.setState(currentValue);
+            break;
+        case "reset":
+            context.df.setState(Chocolates);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+This code can be logically divided into three parts:
+
+1. A **ChocolateBox** which contains an array of chocolates. You can adjust it to reflect your personal chocolate box.
+2. A **Chocolates** object which lists the available chocolates and will update to show which chocolates are reserved.
+3. An aggregator (stateful entity) to either add, get, or reset the chocolate box.
+
+### Azure Function #1: GetReservations
+
+When creating my first Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **GetReservations**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited one file to include the following code: **index.js**.
+
+This will create two files: **function.json** and **index.js**.
+
+In the **function.json** file, I adjusted the code to this:
+
+```
+// GetReservations/function.json
+
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "chocolates",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+In the **index.js** file, I added the following code:
+
+```
+// GetReservations/index.js
+
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Chocolate", "myChocolate");
+    const stateResponse = await client.readEntityState(entityId);
+
+    context.res = {
+        // status: 200, /* Defaults to 200 */
+        body: stateResponse.entityState
+    };
+};
+```
+
+### Azure Function #2: ReserveChocolate
+
+When creating my second Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **ReserveChocolate**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use.
+
+This will create two files: **function.json** and **index.js**.
+
+In the **function.json** file, I adjusted the code to this:
+
+```
+// ReserveChocolate/function.json
+
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post",
+        "delete"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "chocolates",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+In the **index.js** file, I added the following code:
+
+```
+// ReserveChocolate/index.js
+
+const df = require("durable-functions");
+
+module.exports = async function (context, req) {
+    try {
+        const name = (req.query.name || (req.body && req.body.name));
+        const item = (req.query.item || (req.body && req.body.item));
+        const reset = (req.query.reset || (req.body && req.body.reset));
+
+        const client = df.getClient(context);
+        const entityId = new df.EntityId("Chocolate", "myChocolate");
+        let responseMessage = "";
+
+        if (req.method === "DELETE" || reset) {
+            await client.signalEntity(entityId, "reset")
+            responseMessage = "All reservations have been cleared.";
+        } else {
+            if (!name || !item) {
+                context.res = {
+                    status: 400,
+                    body: "name and item parameters are required"
+                };
+                return;
+            }
+            await client.signalEntity(entityId, "add", {name, item});
+            responseMessage = "Updated reservations";
+        }
+
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: responseMessage
+        };
+    } catch (error) {
+        context.res = {
+            status: 500,
+            body: { message:"error", error }
+        };
+    }
+};
+```
+
+## <a name='results'>3. Check the results</a>
+
+My solution follows three steps:
+
+### Step 1: Make a reservation
+
+#### Input
+
+<img
+  src="assets/chocolate/reservationInput.png"
+  alt="Chocolate reservation input"
+  style="float: left; margin-right: 90px;"
+/>
+
+#### Output
+
+<img
+  src="assets/chocolate/reservationOutput.png"
+  alt="Chocolate reservation output"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Step 2: See updated chocolates and reservations
+
+#### Input
+
+<img
+  src="assets/chocolate/getInput.png"
+  alt="Get chocolate reservation input"
+  style="float: left; margin-right: 90px;"
+/>
+
+#### Output
+
+<img
+  src="assets/chocolate/getOutput.png"
+  alt="Get chocolate reservation output"
+  style="float: left; margin-right: 90px;"
+/>
+
+### Step 3: Clear all reservations
+
+#### Input
+
+<img
+  src="assets/chocolate/clearInput.png"
+  alt="Clear reservations input"
+  style="float: left; margin-right: 90px;"
+/>
+
+#### Output
+
+<img
+  src="assets/chocolate/clearOutput.png"
+  alt="Clear reservations output"
+  style="float: left; margin-right: 90px;"
+/>
+
+## <a name='test'>4. Test it yourself!</a>
+
+You can test it out with the following links. I currently have it assigning an Espresso Shot Chocolate to myself, but you can edit the URL to assign chocolates to more people:
+
+1. [View chocolate box](https://choosechocolates.azurewebsites.net/api/GetReservations)
+2. [Make a reservation](https://choosechocolates.azurewebsites.net/api/ReserveChocolate?name=Locksley&item=Espresso%20Shot)
+3. [View updated chocolate box and reservations](https://choosechocolates.azurewebsites.net/api/GetReservations)
+4. [Clear chocolate box](https://choosechocolates.azurewebsites.net/api/ReserveChocolate?reset=true)
+
+## <a name='resources'>5. More resources</a>
+
+1. Join this week's [Seasons of Serverless](<(https://github.com/microsoft/Seasons-of-Serverless)>) challenge
+2. Learn more about Azure Functions on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/create-serverless-applications/)
+3. Check out my solution to [Challenge 5](https://www.locksleylk.com/2020/bestSoup/)
