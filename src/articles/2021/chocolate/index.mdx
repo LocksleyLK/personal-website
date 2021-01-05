@@ -1,5 +1,5 @@
 ---
-title: "Magic chocolate, durable entities, and seasons of serverless"
+title: "Chocolate, Durable Entities, and Seasons of Serverless"
 date: 2021-01-04
 published: true
 topic: "Serverless"
@@ -41,7 +41,7 @@ We will use [Durable Entities](https://docs.microsoft.com/en-us/azure/azure-func
 
 ## <a name='solution'>2. My solution</a>
 
-My solutiuon calls for three parts: one Durable Entity and two Azure Functions. I'll break them down each part:
+My solutiuon calls for three parts: one Durable Entity and two Azure Functions.
 
 ### The Durable Entity: Chocolate
 
@@ -129,7 +129,7 @@ This code can be logically divided into three parts:
 
 ### Azure Function #1: GetReservations
 
-When creating my first Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **GetReservations**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited one file to include the following code: **index.js**.
+This function will get a list of the available chocolates and reservations made. When creating my first Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **GetReservations**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited one file to include the following code: **index.js**.
 
 This will create two files: **function.json** and **index.js**.
 
@@ -184,7 +184,7 @@ module.exports = async function (context) {
 
 ### Azure Function #2: ReserveChocolate
 
-When creating my second Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **ReserveChocolate**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use.
+This function will allow us to reserve chocolates by listing a name and chocolate type. When creating my second Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **ReserveChocolate**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use.
 
 This will create two files: **function.json** and **index.js**.
 
@@ -265,11 +265,17 @@ module.exports = async function (context, req) {
 };
 ```
 
+This code accepts three values: a **name**, an **item**, and a **reset**.
+
+When someone types in a **name** this will be the person reserving chocolate. When someone types in an **item**, this will be the name of the chocolate they wish to reserve.
+
+Finally, if someone sets **reset** to _True_, the chocolate box is reset and all reservations are erased.
+
 ## <a name='results'>3. Check the results</a>
 
 My solution follows three steps:
 
-### Step 1: Make a reservation
+### Step 1: Make a reservation with **ReserveChocolate**
 
 #### Input
 
@@ -287,7 +293,7 @@ My solution follows three steps:
   style="float: left; margin-right: 90px;"
 />
 
-### Step 2: See updated chocolates and reservations
+### Step 2: See updated chocolates and reservations with **GetReservations**
 
 #### Input
 
@@ -305,7 +311,7 @@ My solution follows three steps:
   style="float: left; margin-right: 90px;"
 />
 
-### Step 3: Clear all reservations
+### Step 3: Clear all reservations with **ReserveChocolate**
 
 #### Input
 
