@@ -35,17 +35,17 @@ In this article, I'll cover my solution to Challenge 6: The Magic Chocolate Box!
 
 ## <a name='outline'>1. Challenge outline</a>
 
-In this challenge, our goal is to develop a solution that would allow family members to reserve their favorite chocolates from a chocolate box. We need to be able to see a list for available chocolates and update the list when reservations are made.
+In this challenge, our goal is to develop a solution that would allow family members to reserve their favorite chocolates from a chocolate box. We need to be able to see a list of available chocolates and update the list when reservations are made.
 
 We will use [Durable Entities](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-entities?tabs=csharp) for our solution.
 
 ## <a name='solution'>2. My solution</a>
 
-My solutiuon calls for three parts: one Durable Entity and two Azure Functions.
+My solution calls for three parts: one Durable Entity and two Azure Functions.
 
 ### The Durable Entity: Chocolate
 
-When creating my Durable Entity in Visual Studio, I selected the **Durable Functions activity**, and named the function **Chocolate**.
+When creating my Durable Entity in Visual Studio, I selected the **Durable Functions activity** and named the function **Chocolate**.
 
 This will create two files: **function.json** and **index.js**.
 
@@ -77,7 +77,7 @@ const ChocolateBox = [
     "Milk Sea Salt Caramel",
     "Apple Cider Caramel",
     "Almond Butter Crunch",
-    "Cherry Codial",
+    "Cherry Cordial",
     "Coconut Delight",
     "Dipped Pineapple",
     "Dipped Apricot",
