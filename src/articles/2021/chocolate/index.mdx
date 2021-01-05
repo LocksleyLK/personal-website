@@ -43,6 +43,8 @@ We will use [Durable Entities](https://docs.microsoft.com/en-us/azure/azure-func
 
 My solution calls for three parts: one Durable Entity and two Azure Functions.
 
+I used **JavaScript** for my solution but there are lots of different languages you can use.
+
 ### The Durable Entity: Chocolate
 
 When creating my Durable Entity in Visual Studio, I selected the **Durable Functions activity** and named the function **Chocolate**.
@@ -129,7 +131,7 @@ This code can be logically divided into three parts:
 
 ### Azure Function #1: GetReservations
 
-This function will get a list of the available chocolates and reservations made. When creating my first Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **GetReservations**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited one file to include the following code: **index.js**.
+This function will get a list of the available chocolates and reservations made. When creating my first Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **GetReservations**, snd gave it an **Anonymous** authorization level.
 
 This will create two files: **function.json** and **index.js**.
 
@@ -184,7 +186,7 @@ module.exports = async function (context) {
 
 ### Azure Function #2: ReserveChocolate
 
-This function will allow us to reserve chocolates by listing a name and chocolate type. When creating my second Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **ReserveChocolate**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use.
+This function will allow us to reserve chocolates by listing a name and chocolate type. When creating my second Azure Function in Visual Studio, I selected the **HTTP trigger**, named the function **ReserveChocolate**, snd gave it an **Anonymous** authorization level.
 
 This will create two files: **function.json** and **index.js**.
 
@@ -280,7 +282,7 @@ My solution follows three steps:
 #### Input
 
 <img
-  src="assets/chocolate/reservationInput.png"
+  src="/assets/chocolate/reservationInput.png"
   alt="Chocolate reservation input"
   style="float: left; margin-right: 90px;"
 />
@@ -288,7 +290,7 @@ My solution follows three steps:
 #### Output
 
 <img
-  src="assets/chocolate/reservationOutput.png"
+  src="/assets/chocolate/reservationOutput.png"
   alt="Chocolate reservation output"
   style="float: left; margin-right: 90px;"
 />
@@ -298,7 +300,7 @@ My solution follows three steps:
 #### Input
 
 <img
-  src="assets/chocolate/getInput.png"
+  src="/assets/chocolate/getInput.png"
   alt="Get chocolate reservation input"
   style="float: left; margin-right: 90px;"
 />
@@ -306,7 +308,7 @@ My solution follows three steps:
 #### Output
 
 <img
-  src="assets/chocolate/getOutput.png"
+  src="/assets/chocolate/getOutput.png"
   alt="Get chocolate reservation output"
   style="float: left; margin-right: 90px;"
 />
@@ -316,7 +318,7 @@ My solution follows three steps:
 #### Input
 
 <img
-  src="assets/chocolate/clearInput.png"
+  src="/assets/chocolate/clearInput.png"
   alt="Clear reservations input"
   style="float: left; margin-right: 90px;"
 />
@@ -324,7 +326,7 @@ My solution follows three steps:
 #### Output
 
 <img
-  src="assets/chocolate/clearOutput.png"
+  src="/assets/chocolate/clearOutput.png"
   alt="Clear reservations output"
   style="float: left; margin-right: 90px;"
 />
