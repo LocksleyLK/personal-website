@@ -1,15 +1,15 @@
 ---
-title: "The biggest (and best) BBQ with Seasons of Serverless"
+title: "Recipe hotline with Seasons of Serverless"
 date: 2021-01-11
-published: false
+published: true
 topic: "Serverless"
-tags: ["Azure", "JavaScript", "Twilio"]
-featuredImage: "/assets/bestBBQ/best.jpg"
+tags: ["Azure", "JavaScript", "Twilio", "serverless"]
+featuredImage: "/assets/jollof/senegal.jpg"
 ---
 
-This week, we're traveling to Brazil with week four of [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless) series.
+We have reached the final week of the [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless) challenge where we are travelling to Africa to create a recipe hotline for jollof rice.
 
-In this article, I'll cover my solution to Challenge 4: A Big Barbecue!
+In this article, I'll cover my solution to Challenge 7: The Recipe Connector!
 
 ## Table of Contents
 
@@ -21,9 +21,7 @@ In this article, I'll cover my solution to Challenge 4: A Big Barbecue!
 
 ### [3. Check the results](#results)
 
-### [4. Test it yourself!](#test)
-
-### [5. More resources](#resources)
+### [4. More resources](#resources)
 
 <br />
 
@@ -32,120 +30,98 @@ In this article, I'll cover my solution to Challenge 4: A Big Barbecue!
 - Visual Studio Code
 - Azure Functions Extension Installed
 - An Azure account
+- Twilio Free Trial Account
 
 ## <a name='outline'>1. Challenge outline</a>
 
-In this challenge, our goal is to determine how many people we can invite to our BBQ given our budget and quantities of food.
+In this challenge, our goal is to create a recipe hotline that will text the user the recipe they're searching for.
 
 ### Input
 
-For this challenge, we will have thirteen inputs:
+For this challenge, we will have two inputs:
 
-1. Our budget (in US Dollars)
-2. Amount of beef (in kilograms)
-3. Amount of fillet (in kilograms)
-4. Amount of sausages (in kilograms)
-5. Amount of grilled cheese (in pieces)
-6. Amount of garlic bread (in pieces)
-7. Amount of chicken (in kilograms)
-8. Cost of beef (in US Dollars)
-9. Cost of fillet (in US Dollars)
-10. Cost of sausages (in US Dollars)
-11. Cost of grilled cheese (in US Dollars)
-12. Cost of garlic bread (in US Dollars)
-13. Cost of chicken (in US Dollars)
+- The **phone number** you would like the recipe sent to
+- The **name** of the recipe
 
 ### Output
 
-There are two distinct parts to our output:
+The output will be a text message sent to the user with the ingredients and instructions for a recipe.
 
-#### 1. The number of people we can invite
+### [2. My solution](#solution)
 
-- Total food (in kilograms) / 1.65
+I first created a Twilio trial account. This involved creating a project, verifying my phone number, and accessing the string identifier (SID) and authorization token. This is what connects my Azure Function to a phone number to send and recieve messages.
 
-#### 2. Budget left over
-
-- Budget - the total cost of all our ingredients
-
-### How did I get these numbers?
-
-My solution assumes each guest will eat approximately 1 kilo of beef, fillet, sausages, and chicken and .65 pieces of grilled cheese and garlic bread. For the sake of simplicity, I added these two numbers together.
-
-So, the number of people we invite could be found by adding all of the food together and dividing it by 1.65.
-
-## <a name='solution'>2. My solution</a>
-
-When creating my Azure Function, I selected the **HTTP trigger**, named the function **bestBBQ**, snd gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited one file to include the following code: **index.js**.
+When creating my Azure Function in Visual Studio, I selected **HTTP trigger**, named the function **recipeConnector**, and gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited the **index.js** file to include the following code:
 
 ```
-// bestBBQ/index.js
+// recipeConnector/index.js
+
+var accountSid = [Insert accountSid from Twilio]; // Your Account SID from www.twilio.com/console
+var authToken = [Insert authToken from Twilio];   // Your Auth Token from www.twilio.com/console
+
+const twilioClient = require('twilio')(accountSid, authToken);
+
+const jollof = `Authentic Jollof Recipe
+
+Ingredients
+- 5 medium sized Roma tomatoes, roughly chopped
+- 1 red bell pepper, roughly chopped
+- 1 medium sized onion, roughly chopped, set aside
+- 2 scotch bonnet peppers (habanero peppers as they are sometimes called)
+- 1/4 cup of groundnut oil
+- 3 tbsp tomato paste
+- 2 cups of parboiled rice
+- 2 1/2 cups of chicken stock
+- 1 tsp salt to taste
+- 1/2 tsp curry powder
+- 1/2 tsp thyme
+- 1 tsp All purpose seasoning
+- 1 Knorr stock cube
+- 3 bay leaves
+- Water, as needed
+
+Instructions
+Blend your tomatoes, red pepper, scotch bonnet peppers in a food processor or blender for about 45 seconds, make sure that everything is blended well.
+In a medium sized pot, heat your oil on medium-high heat. Once the oil is heated add the onions you set aside and fry just until they turn golden brown. Once the onions, have turned brown in color add the tomato paste and fry for 2-3 minutes. Then add the blended tomato mixture (reserve about 1/4 cup and set aside) and fry the mixture with the onions and tomato paste for about 30 minutes. Make sure you stir consistently so that the tomato mixture does not burn.
+After 30 minutes, turn the heat down to medium, and add the chicken stock. Mix and add your seasonings (salt, curry powder, thyme, all purpose seasoning, and the Knorr stock cube). Continue to boil for 10 minutes.
+Add the parboiled rice** to the pot. Mix it very well with the tomato stew. At this point if you need to add water so that the rice is level with the tomato mixture/chicken stock go ahead and do so. Add the bay leaves, cover the pot, and cook on medium to low heat for 15-30 minutes.
+When the liquid has almost dried up add the remaining tomato stew**, cover, and let it cook for another 5-10 minutes heat until the liquid has completely dried up. Turn off the heat, mix thoroughly, and your Jollof Rice is ready to be eaten!`
+
 
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    const budget = (req.query.budget || (req.body && req.body.budget));
+    const phoneNumber = (req.query.phoneNumber || (req.body && req.body.phoneNumber));
+    const recipeName = (req.query.recipeName || (req.body && req.body.recipeName));
 
-    const beefKilos = parseFloat(req.query.beefKilos || (req.body && req.body.beefKilos));
-    const filletKilos = parseFloat(req.query.filletKilos || (req.body && req.body.filletKilos));
-    const sausagesKilos = parseFloat(req.query.sausagesKilos || (req.body && req.body.sausagesKilos));
-    const grilledCheesePieces = parseFloat(req.query.grilledCheesePieces || (req.body && req.body.grilledCheesePieces));
-    const garlicBreadPieces = parseFloat(req.query.garlicBreadPieces || (req.body && req.body.garlicBreadPieces));
-    const chickenKilos = parseFloat(req.query.chickenKilos || (req.body && req.body.chickenKilos));
+    var msg = "Please enter a recipeName to get an authentic recipe!"
 
-    const beefPrice = parseFloat(req.query.beefPrice || (req.body && req.body.beefPrice));
-    const filletPrice = parseFloat(req.query.filletPrice || (req.body && req.body.filletPrice));
-    const sausagesPrice = parseFloat(req.query.sausagesPrice || (req.body && req.body.sausagesPrice));
-    const grilledCheesePrice = parseFloat(req.query.grilledCheesePrice || (req.body && req.body.grilledCheesePrice));
-    const garlicBreadPrice = parseFloat(req.query.garlicBreadPrice || (req.body && req.body.garlicBreadPrice));
-    const chickenPrice = parseFloat(req.query.chickenPrice || (req.body && req.body.chickenPrice));
-
-
-    if (!budget) {
-        context.res = {
-            status: 400,
-            body: "Parameter budget is required."
-        };
-
-        return;
+    if (recipeName) {
+        msg = jollof;
     }
 
-    // We are assuming the average guest will consume 1 kilo of meat and 0.65 pieces of grilled cheese and garlic bread
+    let messageSegments = msg.match(/(.|[\r\n]){1,1200}/g);
 
-    totalFood = beefKilos + filletKilos + sausagesKilos + grilledCheesePieces + garlicBreadPieces + chickenKilos;
-
-    const budgetReport = beefPrice + filletPrice + sausagesPrice + grilledCheesePrice + garlicBreadPrice + chickenPrice;
-
-    const responseMessage = budget
-
-        ? `You have a budget of $${budget}.
-
-Amount of food:
-Beef: ${(beefKilos)} kilos - $${(beefPrice)}
-Fillet: ${(filletKilos)} kilos - $${(filletPrice)}
-Sausages: ${(sausagesKilos)} kilos - $${(sausagesPrice)}
-Grilled cheese: ${(grilledCheesePieces)} pieces - $${(grilledCheesePrice)}
-Garlic bread: ${(garlicBreadPieces)} pieces - $${(garlicBreadPrice)}
-Chicken: ${(chickenKilos)} kilos - $${(chickenPrice)}
-
-You could serve ${(totalFood / 1.65).toFixed()} people
-
-Budget left over: ${(budget - budgetReport)} dollars
-`
-
-        :
-        "Please input your BBQ budget!";
+    for (let i = 0; i < messageSegments.length; i++) {
+        const segment = messageSegments[i];
+        await twilioClient.messages.create({
+            from: "+12015142368",
+            to: phoneNumber,
+            body: segment
+          });
+    }
 
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: responseMessage
+        body: "Watch your text messages for the recipe :)"
     };
-}
+};
 ```
 
-### A note on my solution
+My solution can be broken into two parts:
 
-- I used parseFloat() to turn all of the values into Floats. This was done so I could add all of the inputs together to determine the total amount of food and the total cost.
-- When calculating the total number of people I could invite, I used `.toFixed()` because I could not invite a fraction of a person!
+1. The Jollof Recipe. This calue vontains the ingredients and instructions to make authentic jollof. This is what will be texted to a user.
+2. The Azure Function. When the name, **jollof** is inputted with a phone number, this will trigger the jollof recipe to be sent to the phone.
 
 ## <a name='results'>3. Check the results</a>
 
@@ -154,7 +130,7 @@ After deploying my code to Azure's Function App, this is what I got:
 ### Input
 
 <img
-  src="/assets/bestBBQ/input.png"
+  src="/assets/jollof/input.png"
   alt="Azure Functions Input"
   style="float: left; margin-right: 90px;"
 />
@@ -162,17 +138,20 @@ After deploying my code to Azure's Function App, this is what I got:
 ### Output
 
 <img
-  src="/assets/bestBBQ/output.png"
+  src="/assets/jollof/output.png"
   alt="Azure Functions Output"
   style="float: left; margin-right: 90px;"
 />
 
-## <a name='test'>4. Test it yourself!</a>
+### Text output
 
-Go [here](https://bestbbq.azurewebsites.net/api/bestBBQ?budget=200&beefKilos=3&filletKilos=2&sausagesKilos=3&grilledCheesePieces=3&garlicBreadPieces=4&chickenKilos=3&beefPrice=30&filletPrice=36&sausagesPrice=18&grilledCheesePrice=24&garlicBreadPrice=12&chickenPrice=12) to see it in action!
+<img
+  src="/assets/jollof/textOutput.png"
+  alt="Azure Functions Output"
+  style="float: left; margin-right: 90px;"
+/>
 
-## <a name='resources'>5. More resources</a>
+## <a name='resources'>4. More resources</a>
 
-1. Join this week's [Seasons of Serverless](<(https://github.com/microsoft/Seasons-of-Serverless)>) challenge
-2. Learn more about Azure Functions on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/create-serverless-applications/)
-3. Check out my solution to [Challenge 3](https://www.locksleylk.com/2020/longestKebab/)
+1. Learn more about Azure Functions on [Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/create-serverless-applications/)
+2. Check out my solution to [Challenge 6](https://www.locksleylk.com/2021/chocolate/)
