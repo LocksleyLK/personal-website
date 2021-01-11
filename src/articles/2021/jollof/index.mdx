@@ -7,7 +7,7 @@ tags: ["Azure", "JavaScript", "Twilio", "serverless"]
 featuredImage: "/assets/jollof/senegal.jpg"
 ---
 
-We have reached the final week of the [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless) challenge where we are travelling to Africa to create a recipe hotline for jollof rice.
+We have reached the final week of the [Seasons of Serverless](https://github.com/microsoft/Seasons-of-Serverless) challenge where we are traveling to Africa to create a recipe hotline for jollof rice.
 
 In this article, I'll cover my solution to Challenge 7: The Recipe Connector!
 
@@ -49,7 +49,7 @@ The output will be a text message sent to the user with the ingredients and inst
 
 ### [2. My solution](#solution)
 
-I first created a Twilio trial account. This involved creating a project, verifying my phone number, and accessing the string identifier (SID) and authorization token. This is what connects my Azure Function to a phone number to send and recieve messages.
+I first created a Twilio trial account. This involved creating a project, verifying my phone number, and accessing the string identifier (SID) and authorization token. This is what connects my Azure Function to a phone number to send and receive messages.
 
 When creating my Azure Function in Visual Studio, I selected **HTTP trigger**, named the function **recipeConnector**, and gave it an **Anonymous** authorization level. I used **JavaScript** for my solution but there are lots of different languages you can use. I edited the **index.js** file to include the following code:
 
@@ -120,7 +120,7 @@ module.exports = async function (context, req) {
 
 My solution can be broken into two parts:
 
-1. The Jollof Recipe. This calue vontains the ingredients and instructions to make authentic jollof. This is what will be texted to a user.
+1. The Jollof Recipe. This value contains the ingredients and instructions to make authentic jollof. This is what will be texted to a user.
 2. The Azure Function. When the name, **jollof** is inputted with a phone number, this will trigger the jollof recipe to be sent to the phone.
 
 ## <a name='results'>3. Check the results</a>
