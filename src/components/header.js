@@ -72,7 +72,7 @@ export default function Header() {
       <img className="h-40 w-40 rounded-full mx-auto mt-10 sm:mt-16 md:mt-18 lg:mt-20 xl:mt-22 2xl:mt-24 mb-8 shadow-2xl" src="/assets/avatar.jpg" alt="A portrait of Locksley" />
       <div className="text-center">
         <h1 className="text-4xl"><b>Locksley</b> Kolakowski</h1>
-        <h2 className="text-2xl">Undergraduate Teaching Assitant at <a href="https://zeitworks.com/" target="_blank" className=" hover:text-green-600">The University of Washington</a></h2>
+        <h2 className="text-2xl">Teaching Assitant at <a href="https://zeitworks.com/" target="_blank" className=" hover:text-green-600">The University of Washington</a></h2>
       </div>
       <ul className="flex justify-center text-2xl mt-2">
         <li className="mr-6">
