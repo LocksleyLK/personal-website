@@ -1,0 +1,32 @@
+---
+title: "Examining Azure IoT Edge's certified hardware"
+date: 2021-02-12
+published: false
+topic: "Cybersecurity"
+tags: ["cybersecurity", "risk", "information assurance"]
+featuredImage: "/assets/lock.jpg"
+---
+
+## Question
+
+Pick an appliance connected to the internet. (If your client is an IoT manufacturer, please pick one of its devices to do this assignment.) Do a thorough investigation to find out if its privacy settings can be configured; if its ownership can be changed; and whether or not it can be set to configure other devices in your environment.
+
+## Answer
+
+Microsoft does not sell many Internet of Things devices to customers but they are working on many cloud-based solutions through a product offering called the Azure IoT Edge. The Azure IoT edge is “cloud intelligence deployed locally on IoT devices.” One aspect of this product offering is a list of certified IoT Edge hardware that is compatible with Linux and Windows devices.[^1]
+
+One of these pieces of hardware is called the Pixsee created by Compal Electronics. Pixsee is a smart baby monitor; through 24/7 video coverage, it uses “smart detection technology and advanced algorithms [to] instantly track and detect your baby’s facial expressions and…interactions with the family.”[^2]
+
+Pixsee is only available in Japan and comes with many security guarantees. This includes complying with GDPR, an encrypted security chip, data that is securely protected in Azure, and encrypts data that is transferred between devices.
+
+The most dangerous aspect of Pixsee seems to be its connection to a mobile app. From this app, it is plausible that the device’s privacy settings can be configured, and ownership changed. Thankfully, it does not look like Pixsee can configure other devices on the internet.[^3]
+
+_This article is part of my Information Assurance and Cybersecurity Series. Learn more [here](https://www.locksleylk.com/2021/cybersecurityintro/)._
+
+## Sources
+
+[^1] Microsoft. (n.d.). IoT Edge. Microsoft Azure. Retrieved February 6, 2021, from https://azure.microsoft.com/en-us/services/iot-edge/
+
+[^2] Microsoft. (n.d.-a). Azure Certified Device catalog (preview). Microsoft Azure. https://devicecatalog.azure.com/devices/6046b3ea-9db0-40fc-9664-ac9dec3c0d2d
+
+[^3] pixsee. (n.d.). pixsee. Pixseecare. https://www.pixseecare.com/tw
