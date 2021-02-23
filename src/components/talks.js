@@ -1,6 +1,12 @@
 export default [
   {
     title: "Intro to Python Workshop",
+    event: "sheHACKS",
+    date: "February 20, 2021",
+    eventLink: "https://www.eventbrite.sg/o/girls-in-tech-uwcsea-30082525884"
+  },
+  {
+    title: "Intro to Python Workshop",
     event: "TechTogether Seattle",
     date: "January 23, 2021",
     eventLink: "https://seattle.techtogether.io/"
