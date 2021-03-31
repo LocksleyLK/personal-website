@@ -1,5 +1,11 @@
 export default [
   {
+    title: "Speaker Spotlight Series",
+    event: "SENDforC",
+    date: "March 30, 2021",
+    eventLink: "https://sendforc.org/"
+  },
+  {
     title: "Intro to Python Workshop",
     event: "sheHACKS",
     date: "February 20, 2021",
