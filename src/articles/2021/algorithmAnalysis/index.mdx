@@ -1,0 +1,113 @@
+---
+title: "Analyzing memory and cache-friendly algorithms"
+author: "Locksley Kolakowski"
+date: 2021-03-12
+published: true
+topic: "Data Structures and Algorithms"
+tags: ["algorithms", "cloud", "computer science"]
+featuredImage: "/assets/algorithmAnalysis/cloud.jpg"
+---
+
+## Written in collaboration with [Melina Perraut](https://www.linkedin.com/in/melina-perraut/) and [Lynzley Kolakowski](https://www.linkedin.com/in/lynzley-kolakowski/) for The University of Wasington's Data Structures and Algorithms course!
+
+## 1. Project motivation
+
+The cloud is one of the fastest-growing technologies, and we can owe a majority of that growth to companies like Amazon and Microsoft that are in the University of Washington’s backyard. To aid in this growth, cloud providers are building data centers around the world. Data centers are often more energy and cost-efficient than on-premises solutions but there is no denying their environmental impact. Data centers consume approximately 3% of the world’s electricity annually, and this is expected to double every 4 years.<sup>1</sup>
+
+Understanding memory and cache-friendly algorithms is an essential first step to understanding how we can optimize data centers to be more energy efficient. In this article, we will explore 3 data structures that reduce memory usage and have more efficient runtimes. These three algorithms are swiss tables, bloom filters, and suffix arrays.
+
+## 2. Algorithm explanation
+
+### a. Swiss tables
+
+Swiss tables are a recently developed and very optimized design for hash tables deployed by Google as a way to use less computing and memory resources. Using metadata attached to values in the table, Swiss tables create two layers of hashing that require significantly fewer resources to parse through and find results than other algorithms.<sup>2</sup>
+
+Swiss tables are a 64-bit hash value that is split into two hash methods:
+
+- H1 is a layer of metadata that contains the indexes of the buckets of data within the table, as well as the presence information of the elements in the hash table.
+- H2 is the layer of the table that contains the buckets of elements.
+
+A visual representation of the two hash layers would look like this:
+
+![image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/427ovksu9uvca34ycjuq.png)
+
+By splitting the table into the two layers of hash methods, functions like searching and insertion are far more efficient, as the full buckets of data will only be parsed through if the element is confirmed to be present in that bucket. This is because the metadata in the H1 method stores presence information for the elements in the buckets accessible by H2, and is only one byte. The presence metadata information can indicate if the associated element in H2 is present, empty, or deleted.
+
+When searching through a Swiss table, H1 is first used to find the bucket that the desired value has been stored in, and whether it is present or deleted in that bucket. Once the correct bucket has been found, H2 will search through the correct bucket for a value matching the one that is being searched for. This is much more efficient than searching through an entire table for a value that may not be present or deleted. A visual representation of this process would look like this:
+
+![swiss](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/thoqlmvycjl8btt1zesp.png)
+
+First, the value is found to be in the metadata of Bucket 3, highlighted in dark green. There is no need to search through the entirety of buckets 1-2, which is the crucial time and computing resource-saving element of the Swiss table’s design. Then, the bucket is searched through to find the matching value, which is present. If the value had been deleted, a ‘gravestone’ would mark where it had been previously. Instead of having to search through the entire table for the matching value, the design of the Swiss table means that only the elements in each bucket are searched through.<sup>3</sup>
+
+Since Swiss tables do not need to search through all the buckets for a value when executing a lookup method--which would be a constant runtime of O(N)--and are designed so the hash elements are distributed evenly, their runtime is **O(1)**.
+
+### b. Bloom filters
+
+Bloom filters are a space-efficient data structure used to tell whether a member is present in a set, and they were invented by Burton Howard Bloom in 1970. Bloom filters are probabilistic, meaning that a filter can tell whether an element is definitely not in a set or whether it may be in the set. This means it can result in false positives (stating that an element is in the set when it isn’t) but not false negatives.<sup>4</sup>
+
+Bloom filters are composed of a bit array (an array data structure that compactly stores bits, which are the smallest increment of data on a computer that represents either 0 or 1).<sup>5</sup> The “default” bloom filter is a bit array containing all zeros. We use independent hash functions to calculate where items should be stored in the bit array. The optimal number of hash functions, k, is calculated based on the number of items we are hashing and the length of the table. The bloom filter structure avoids unnecessary memory accesses and improves performance through hashing, and the false positive rate depends on the size of the bit array and the number of hash functions.
+
+The basic bloom filter supports two operations, add and check:<sup>6</sup>
+
+- To add a value into the bit array, hash the value with all k hashes, and then set the bit in each hashed position of the array to 1 for each result.
+- To check if a value is in the set, we re-hash the value with all k hash functions. If the bits returned are 1, we can say that the value is probably in the table (there is overlap that could result in false positives). If the bits returned are 0, we can say that the value is definitely not in the table.
+- We cannot remove values from a set because it might remove another inserted value, introducing false negatives. However, extensions to the bloom filter are possible that allow for removal.
+
+The Big-O notation of using bloom filters is O(k), where k is the number of hash functions. In other words, the runtime of bloom filters is constant. This is particularly efficient when searching for elements that do not exist in a set, since the worst-case runtime without bloom filters would be linear. The space used by bloom filters is a bit harder to define since it is dependent on the error rate you are willing to tolerate as well as the potential range of the elements to be inserted.<sup>7</sup>
+
+![bloomFilter](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/a3f5medlgr27q06vus84.png)
+
+![checkOperation](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8f67d932f9lm06asg2fs.png)
+
+### c. Suffix arrays
+
+To understand Suffix Arrays, we first need to answer the following questions:
+
+1. What is an array?
+2. What is a suffix?
+
+An **array** is a collection of values stored at a specific index. Arrays start at 0 and can hold letters, numbers, and even words. The following is an example of an array containing the word, pineapple. Each letter is being held at a unique index.<sup>8</sup>
+
+![standardArray](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cmrle5gt9uk1qe5wktn0.png)
+
+A **suffix** is a collection of letters that can be added to the end of a word to create a new one. In our context, “apple” is a suffix because when it is added to “pine,” it creates the new word: “pineapple.”<sup>9</sup>
+
+With this in mind, we can now understand that “a suffix array is a sorted array of all suffixes of a given string.”<sup>10</sup> We use them to discern patterns from strings or a collection of characters.
+
+So how would we turn our standard array into a suffix array? To do this, we’ll take the following array and list out all of its suffixes of pineapple.
+
+![suffixes](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jih1u3k7ffnhiknitp7z.png)
+
+Now, we’ll sort these 9 suffixes in **increasing alphabetical order**. It should look something like this:
+
+![sort](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cwhihav87obvdo326ljh.png)
+
+When storing our new suffix array, we only need the index to produce the suffix. The suffix of each index is cached instead of being stored in memory. This means that the indexes of our newly alphabetized suffixes become our new Suffix array as shown here:
+
+![suffixArray](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/r23ratt9o0kixj69uoys.png)
+
+A key benefit of suffix arrays is it allows us to find substrings easier and identify substrings that repeat. Since a suffix array has already been sorted alphabetically, we also speed up the time it takes to process from **O(N<sup>2</sup>)** to **linear time**.<sup>11</sup> One example use case is DNA sequencing; suffix arrays can be utilized to find repeated DNA sequences in a longer sequence.<sup>12</sup>
+
+Furthermore, the construction of a suffix array has a Big-O notation of **O(NlogN)**, and the search runtime is **O(N)**.<sup>13</sup>
+
+## 3. Key learning target
+
+This is the key learning target we will address: "Bloom filters use multiple hash functions. Suppose we use multiple hash functions to resolve collisions in a separate chaining hash table by making them recursive: each bucket is itself a separate chaining hash table! The resulting data structure is a tree composed of nested hash tables, where all of the hash tables on each level of the tree use a different hash function. If every hash function uniformly distributes the N elements but every hash table has a fixed number of buckets M, give an asymptotic runtime analysis for this recursive hash table data structure in terms of N and M."
+
+The asymptotic runtime analysis for the recursive hash table data structure described in the learning target is **O(log<sub>M</sub>N)**. The reasoning behind this answer involves the typical runtime of a tree structure containing N elements, which is O(log<sub>2</sub>N). In the case of our given recursive hash table data structure, the tree contains N elements and is composed of M buckets that the elements are uniformly distributed amongst. Comparing this data structure to a binary tree, instead of having the typical two nodes per level, we have M, requiring us to adjust the log base from 2 to M. This results in the runtime of O(log<sub>M</sub>N).
+
+## 4. References
+
+[^1]https://www.forbes.com/sites/forbestechcouncil/2017/12/15/why-energy-is-a-big-and-rapidly-growing-problem-for-data-centers/?sh=6b47ef2b5a30
+[^2]https://www.youtube.com/watch?v=ncHmEUmJZf4&ab_channel=CppCon
+[^3]https://abseil.io/about/design/swisstables
+[^4]https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1206/lectures/esoteric-data-structures/#bloom-filters
+[^5]https://en.wikipedia.org/wiki/Bit_array
+[^6]https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1206/lectures/esoteric-data-structures/#bloom-filters
+[^7]https://llimllib.github.io/bloomfilter-tutorial/
+[^8]https://www.geeksforgeeks.org/introduction-to-arrays/
+[^9]https://www.niftyword.com/prefix-suffix-derived/pine/
+[^10]https://www.geeksforgeeks.org/suffix-array-set-1-introduction/
+[^11]https://www.cs.dartmouth.edu/~doug/sarray/
+[^12]https://courses.cs.washington.edu/courses/cse373/21wi/research-project/
+[^13]https://www.geeksforgeeks.org/suffix-array-set-2-a-nlognlogn-algorithm/
