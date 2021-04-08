@@ -1,5 +1,17 @@
 export default [
   {
+    title: "Co-host",
+    event: "Global AI Student Conference",
+    date: "April 24, 2021",
+    eventLink: "https://aiconf.education/"
+  },
+  {
+    title: "Winfo Vision Board Event",
+    event: "Women in Informatics",
+    date: "April 9, 2021",
+    eventLink: "https://winfo.ischool.uw.edu/"
+  },
+  {
     title: "Speaker Spotlight Series",
     event: "SENDforC",
     date: "March 30, 2021",
