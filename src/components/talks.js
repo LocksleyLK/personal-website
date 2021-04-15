@@ -1,15 +1,15 @@
 export default [
   {
-    title: "Co-host",
-    event: "Global AI Student Conference",
-    date: "April 24, 2021",
-    eventLink: "https://aiconf.education/"
-  },
-  {
     title: "#VisualGreenTech Challenge",
     event: "Hello World",
     date: "April 22, 2021",
     eventLink: "https://channel9.msdn.com/Shows/Hello-World"
+  },
+  {
+    title: "Co-host",
+    event: "Global AI Student Conference",
+    date: "April 24, 2021",
+    eventLink: "https://aiconf.education/"
   },
   {
     title: "Winfo Vision Board Event",
