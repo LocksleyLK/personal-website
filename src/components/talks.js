@@ -6,6 +6,12 @@ export default [
     eventLink: "https://aiconf.education/"
   },
   {
+    title: "Visual Green Tech Challenge",
+    event: "Hello World",
+    date: "April 22, 2021",
+    eventLink: "https://channel9.msdn.com/Shows/Hello-World"
+  },
+  {
     title: "Winfo Vision Board Event",
     event: "Women in Informatics",
     date: "April 9, 2021",
