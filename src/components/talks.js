@@ -6,7 +6,7 @@ export default [
     eventLink: "https://aiconf.education/"
   },
   {
-    title: "Visual Green Tech Challenge",
+    title: "#VisualGreenTech Challenge",
     event: "Hello World",
     date: "April 22, 2021",
     eventLink: "https://channel9.msdn.com/Shows/Hello-World"
