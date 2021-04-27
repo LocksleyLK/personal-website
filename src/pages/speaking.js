@@ -57,8 +57,19 @@ export default function Speaking() {
       <p className="mt-4">If you think I would be a good fit for your event or would like to learn more, you can email me personally at locksleylk@gmail.com.</p>
 
       <h2 className="font-bold text-2xl mt-8">Check out some of my past recordings!</h2>
-      <iframe className="mt-4 w-full h-3/6" src="https://www.youtube.com/embed/5prq8r5qD9s?start=40062" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <h3 className="font-bold text-xl mt-6">Tech talks</h3>
+      <div className="mt-4 w-full aspect-w-16 aspect-h-9" >
+        <iframe className="w-full" src="https://www.youtube.com/embed/5prq8r5qD9s?start=40062" allowFullScreen frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
 
-    </Layout>
+      <h3 className="font-bold text-xl mt-6">Co-hosting the Global AI Student Conference</h3>
+      <div className="mt-4 w-full aspect-w-16 aspect-h-9" >
+        <iframe className="w-full" src="https://www.youtube.com/embed/H9byptcGmmg?start=15136" allowFullScreen frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <h3 className="font-bold text-xl mt-6">Featured on Hello World</h3>
+      <div className="mt-4 w-full aspect-w-16 aspect-h-9" >
+        <iframe className="w-full" src="https://channel9.msdn.com/Shows/Hello-World/Hello-World-April-22-2021-Special-Hello-Earth/player" allowFullScreen frameBorder="0" title="Hello World: April 22, 2021 - Special Hello Earth! - Microsoft Channel 9 Video"></iframe>
+      </div> </Layout>
   </div>
 }
