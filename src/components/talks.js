@@ -1,15 +1,21 @@
 export default [
   {
-    title: "#VisualGreenTech Challenge",
-    event: "Hello World",
-    date: "April 22, 2021",
-    eventLink: "https://channel9.msdn.com/Shows/Hello-World"
+    title: "Host - Student Zone",
+    event: "Microsoft Build",
+    date: "May 25, 2021",
+    eventLink: "https://mybuild.microsoft.com/home"
   },
   {
     title: "Co-host",
     event: "Global AI Student Conference",
     date: "April 24, 2021",
     eventLink: "https://aiconf.education/"
+  },
+  {
+    title: "#VisualGreenTech Challenge",
+    event: "Hello World",
+    date: "April 22, 2021",
+    eventLink: "https://channel9.msdn.com/Shows/Hello-World"
   },
   {
     title: "Winfo Vision Board Event",
