@@ -1,12 +1,18 @@
 export default [
   {
+    title: "Host",
+    event: "Global AI Student Conference",
+    date: "October 16, 2021",
+    eventLink: "https://aiconf.education/"
+  },
+  {
     title: "Host - Student Zone",
     event: "Microsoft Build",
     date: "May 25, 2021",
     eventLink: "https://mybuild.microsoft.com/home"
   },
   {
-    title: "Co-host",
+    title: "Host",
     event: "Global AI Student Conference",
     date: "April 24, 2021",
     eventLink: "https://aiconf.education/"
