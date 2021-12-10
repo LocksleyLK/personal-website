@@ -87,7 +87,7 @@ export default function Header() {
       <div id="avatar" className="h-40 w-40 rounded-full mx-auto mt-10 sm:mt-16 md:mt-18 lg:mt-20 xl:mt-22 2xl:mt-24 mb-8 shadow-2xl" />
       <div className="text-center">
         <h1 className="text-4xl"><b>Locksley</b> Kolakowski</h1>
-        <h2 className="text-2xl">Teaching Assistant at <a href="https://zeitworks.com/" target="_blank" className=" hover:text-green-600">The University of Washington</a></h2>
+        <h2 className="text-2xl">Software Architect Analyst at Accenture</h2>
       </div>
       <ul className="flex justify-center text-2xl mt-2">
         <li className="mr-6">
@@ -147,6 +147,6 @@ export default function Header() {
           <p>I'd love to speak at your event! Check out my past talks and availability <Link className="text-black-500 hover:text-green-600" to="../speaking">here</Link>!</p>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
